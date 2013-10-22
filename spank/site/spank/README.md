@@ -1,0 +1,1 @@
+This is the home of the Django app... manage.py should be in the root of this folder.

@@ -1,0 +1,1 @@
+This is the home of the sphinx documentation. This folder will not be checked on production environment.
