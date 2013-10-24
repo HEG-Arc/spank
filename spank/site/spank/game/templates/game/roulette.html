@@ -1,0 +1,32 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="page13">
+        <div data-role="content">
+            <div class="roulette">
+                <div align="center">
+                    <img id="spin_button" src="{%  static "game/img/spin_on.png" %}" alt="Spin" onClick="startSpin();" class="clickable"/>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td width="438" height="582" class="the_wheel" align="center" valign="center" >
+                                <canvas class="the_canvas" id="myDrawingCanvas" width="434" height="434" >
+                                    <p class="noCanvasMsg" align="center">Sorry, your browser doesn't support canvas.<br />Please try another.</p>
+                                </canvas>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <script>
+
+                    // Call function to draw the wheel face at it's initial position.
+                    begin();
+
+                </script>
+            </div>
+            <a href="roulette/" data-role="button" data-icon="arrow-r" class="next" id="chances">Suite</a>
+        </div>
+    </div>
+{% endblock %}

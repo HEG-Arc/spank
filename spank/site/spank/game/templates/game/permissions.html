@@ -1,0 +1,31 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="permissions">
+        <div data-role="header">
+            <h1>Autorisations</h1>
+        </div>
+        <div data-role="content">
+            <div id="dialog" title="Autorisations">
+                <p>Autoriser cette application à :</p>
+                <ul>
+                    <li>Votre position</li>
+                    <li>Communication réseau</li>
+                    <li>Appels téléphoniques</li>
+                    <li>Stockage</li>
+                    <li>Contrôle du matériel</li>
+                    <li>Vos informations personnelles</li>
+                </ul>
+                <div class="next-permissions">
+                    <a href="../page1" data-role="button">Accepter et continuer</a>
+                    <a href="../refused" data-role="button">Refuser</a>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer">
+            <h4>Copyright HE-ARC 2013</h4>
+        </div>
+    </div>
+{% endblock %}

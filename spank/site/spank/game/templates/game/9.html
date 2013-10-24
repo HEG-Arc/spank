@@ -1,0 +1,17 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="page9">
+        <div data-role="content" class="content">
+            <div id="target" class="speech">
+                <p class="triangle-right">Des photos qu'elle avait prises avec son propre téléphone portable ce seraient "miraculeusement" retrouvées dans les mains des paparazzi! Elle aimerait savoir comment et qui aurait fait ça!?</p>
+            </div>
+            <div class="character">
+                <img src="{%  static "game/img/Spank.gif" %}"/>
+            </div>
+            <a href="page10" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+        </div>
+    </div>
+{% endblock %}

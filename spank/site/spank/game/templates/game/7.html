@@ -1,0 +1,17 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="page7">
+        <div data-role="content" class="content">
+            <div id="target" class="speech">
+                <p class="triangle-right">Très bien! Laissez-moi maintenant vous expliquer la situation...</p>
+            </div>
+            <div class="character">
+                <img src="{%  static "game/img/Spank.gif" %}"/>
+            </div>
+            <a href="page8" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+        </div>
+    </div>
+{% endblock %}

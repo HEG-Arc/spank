@@ -1,0 +1,22 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="multiply">
+        <div data-role="content" class="content">
+            <div class="process">
+                <form action="bye/" method="post">{% csrf_token %}
+                    <div class="invitations">
+                       {% for i in factor %}
+                        <label for="id_education">Email ami n°{{ i|add:"1" }}</label>
+                        <input type="text" name="email_{{ i|add:"1" }}"><br>
+                    {% endfor %}
+                    </div>
+                    <input type="submit" value="Suite" data-icon="arrow-r"/>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

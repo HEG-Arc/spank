@@ -1,0 +1,92 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="create_user">
+        <div data-role="content" class="content">
+            <form action="/game/thanks/" method="post">{% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="detective-badge">
+                    <div class="title">
+                        <div class="fieldWrapper">
+                            {{ form.lastname.errors }}
+                            <label for="id_lastname"></label>
+                            {{ form.lastname }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.firstname.errors }}
+                            <label for="id_firstname"></label>
+                            {{ form.firstname }}
+                        </div>
+                    </div>
+                    <div class="basic-information">
+                        <span class="id-photo">
+                            <img src="{%  static "game/img/badge.png" %}" />
+                        </span>
+                        <span class="address">
+                            <div class="fieldWrapper">
+                                {{ form.address.errors }}
+                                <label for="id_address"></label>
+                                {{ form.address }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.postcode.errors }}
+                                <label for="id_postcode"></label>
+                                {{ form.postcode }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.locality.errors }}
+                                <label for="id_locality"></label>
+                                {{ form.locality }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.country.errors }}
+                                <label for="id_country"></label>
+                                {{ form.country }}
+                            </div>
+                        </span>
+                    </div>
+                    <div class="information">
+                        <div class="fieldWrapper">
+                            {{ form.gender.errors }}
+                            <label for="id_gender"></label>
+                            {{ form.gender }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.height.errors }}
+                            <label for="id_height"></label>
+                            {{ form.height }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.weight.errors }}
+                            <label for="id_weight"></label>
+                            {{ form.weight }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.distinctive_signs.errors }}
+                            <label for="id_distinctive_signs"></label>
+                            {{ form.distinctive_signs }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.education.errors }}
+                            <label for="id_education"></label>
+                            {{ form.education }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.email.errors }}
+                            <label for="id_email"></label>
+                            {{ form.email }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.origin.errors }}
+                            <label for="id_education"></label>
+                            {{ form.origin }}
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Suite" data-icon="arrow-r"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

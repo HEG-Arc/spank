@@ -1,0 +1,9 @@
+{% if latest_page_list %}
+    <ul>
+    {% for page in latest_page_list %}
+        <li><a href="/game/{{ page.id }}/">{{ page.page_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

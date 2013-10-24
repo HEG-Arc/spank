@@ -1,0 +1,36 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="thanks">
+        <div data-role="content">
+            <div class="detective-badge">
+                <div class="title">
+                    <h2>{{ new_user.lastname|upper }}, {{ new_user.firstname }}</h2>
+                </div>
+                <div class="basic-information">
+                    <span class="id-photo">
+                        <img src="{%  static "game/img/badge.png" %}"/>
+                    </span>
+                    <span class="address">
+                        {{ new_user.address }}</br>
+                        {{ new_user.postcode }} {{ new_user.locality }}</br>
+                        {{ new_user.country }}
+                    </span>
+                </div>
+                <div class="information">
+                    <b>Sexe :</b> {{ new_user.gender }}</br>
+                    <b>Taille :</b> {{ new_user.height }}</br>
+                    <b>Poids :</b> {{ new_user.weight }}</br>
+                    <b>Signe(s) distinctif(s) :</b> {{ new_user.distinctive_signs }}</br>
+                    <b>Formation :</b> {{ new_user.education }}</br>
+                    <b>Email :</b> {{ new_user.email }}</br>
+                    <b>Origine :</b> {{ new_user.origin }}
+                </div>
+            </div>
+            <a href="/game/edit/{{ new_user.pk }}" data-role="button" data-icon="arrow-l">Modifier</a>
+            <a href="/game/page7" data-role="button" data-icon="arrow-r">Suite</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="page3">
+        <div data-role="content">
+            <div class="detective-badge">
+                <div class="title">
+                    <h2>SPANK, Amanda</h2>
+                </div>
+                <div class="basic-information">
+                    <span class="id-photo">
+                        <img src="{%  static "game/img/badge.png" %}"/>
+                    </span>
+                    <span class="address">
+                        Rue de l'Enigme 7</br>
+                        4023 Mysterytown</br>
+                        Suisse
+                    </span>
+                </div>
+                <div class="information">
+                    <b>Sexe :</b> Féminin</br>
+                    <b>Taille :</b> 165cm</br>
+                    <b>Poids :</b> 65kg</br>
+                    <b>Signe(s) distinctif(s) :</b> cicatrice sur le sourcil droit, tatouage omoplate gauche</br>
+                    <b>Formation :</b> Ecole policière</br>
+                    <b>Email :</b> amanda.spank@gmail.com</br>
+                    <b>Origine :</b> Etats-Unis
+                </div>
+            </div>
+            <a href="page4" data-role="button" data-icon="arrow-r">Suite</a>
+        </div>
+    </div>
+{% endblock %}

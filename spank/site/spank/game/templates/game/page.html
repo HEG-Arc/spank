@@ -1,0 +1,28 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="page_{{ page_id }}">
+        <div data-role="header">
+            <h1>Détective Spank</h1>
+        </div>
+        <div data-role="content">
+            <div class="dialog">
+                <div class="message">
+                    <span class="arrow_border"></span>
+                    <span class="arrow_inner"></span>
+                    <span>{{ question }}</span>
+                </div>
+            </div>
+            <div class="character">
+                <img src="{%  STATIC "game/img/Spank.JPG" %}/>
+            </div>
+            <a href="accepter.html" data-role="button">Accepter et continuer</a>
+            <a href="refuser.html" data-role="button">Refuser</a>
+        </div>
+        <div data-role="footer">
+            <h4>Copyright HE-ARC 2013</h4>
+        </div>
+    </div>
+{% endblock %}
