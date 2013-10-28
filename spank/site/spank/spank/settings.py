@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'spank.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'spank.wsgi.application'
+# WSGI_APPLICATION = 'spank.wsgi.application'
 
 import os
 TEMPLATE_DIR = '/'.join([
