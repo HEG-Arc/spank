@@ -1,0 +1,10 @@
+Django==1.5.1
+South
+django-autoload	
+django-dbindexer
+django-html5
+django-html5-boilerplate
+django-html5-mobile-boilerplate
+django-jqm
+djangotoolbox
+psycopg2
