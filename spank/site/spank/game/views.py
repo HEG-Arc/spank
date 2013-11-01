@@ -3,18 +3,6 @@ from django.shortcuts import redirect
 from django.template import RequestContext, loader
 from game.models import Poll, Choice, User, UserForm, Answer, Visit, Friend
 
-import urllib
-from django import template
-from django.template.defaultfilters import stringfilter
-from django.utils.html import conditional_escape
-from django.utils.safestring import mark_safe
-
-register = template.Library()
-
-@register.filter
-@stringfilter
-
-
 def spank(request):
     visit = Visit()
     visit.session_number = request.session.session_key
