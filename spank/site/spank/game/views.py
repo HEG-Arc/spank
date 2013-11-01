@@ -33,7 +33,7 @@ def create(request):
 
 def edit(request, number_id):
     user = User.objects.get(pk=number_id)
-    if user.number == request.session['user'].number:
+    if user.number == request.session['spank_user'].number:
         form = UserForm(instance=user)
         template = loader.get_template('game/edit.html')
         context = RequestContext(request, {
@@ -52,7 +52,7 @@ def thanks(request):
             new_user.number = request.session.session_key
             new_user.auth_accepted = request.session['permissions']
             new_user.save()
-            request.session['user'] = new_user
+            request.session['spank_user'] = new_user
             template = loader.get_template('game/thanks.html')
             context = RequestContext(request, {
                 'new_user': new_user,
@@ -68,7 +68,7 @@ def questions(request):
         p = request.POST
         poll = Poll.objects.filter(sequence=p['sequence'], template='question')[0]
         if p.has_key("answer"):
-            answer = Answer(user=request.session['user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
+            answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
             answer.save()
         if p.has_key("next"):
             sequence = p['next']
@@ -83,9 +83,9 @@ def questions(request):
     return HttpResponse(template.render(context))
 
 def chart(request):
-    chiara = Answer.objects.get(user_id=request.session['user'].id, poll_id=1)
-    simone = Answer.objects.get(user_id=request.session['user'].id, poll_id=2)
-    richard = Answer.objects.get(user_id=request.session['user'].id, poll_id=3)
+    chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
+    simone = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=2)
+    richard = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=3)
     template = loader.get_template('game/chart.html')
     context = RequestContext(request, {
         'chiaragreen': range(int(chiara.choice_id)),
@@ -104,7 +104,7 @@ def privacy(request):
         p = request.POST
         poll = Poll.objects.filter(sequence=p['sequence'], template='privacy')[0]
         if p.has_key("answer"):
-            answer = Answer(user=request.session['user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
+            answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
             answer.save()
         if p.has_key("next"):
             sequence = p['next']
@@ -134,11 +134,11 @@ def bye(request):
         for i in range(int(p['factor'])):
             friend = Friend()
             friend.email = p['email_' + str(i)]
-            friend.user = request.session['user']
+            friend.user = request.session['spank_user']
             friend.save()
 
     template = loader.get_template('game/bye.html')
     context = RequestContext(request, {
-        'user': request.session['user'],
+        'user': request.session['spank_user'],
     })
     return HttpResponse(template.render(context))
