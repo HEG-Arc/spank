@@ -1,0 +1,53 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="chart">
+        <div data-role="content">
+            Premiers résultats :
+            <table class="chart">
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img src="{%  static "game/img/Chiara.jpg" %}"/></td>
+                    {% for i in chiaragreen %}
+                        <td style="background-color: red"></td>
+                    {% endfor %}
+                    {% for i in chiara %}
+                        <td style="background-color: green"></td>
+                    {% endfor %}
+                </tr>
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img src="{%  static "game/img/Simone.jpg" %}"/></td>
+                    {% for i in simonegreen %}
+                        <td style="background-color: red"></td>
+                    {% endfor %}
+                    {% for i in simone %}
+                        <td style="background-color: green"></td>
+                    {% endfor %}
+                </tr>
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img src="{%  static "game/img/Richard.jpg" %}"/></td>
+                    {% for i in richardgreen %}
+                        <td style="background-color: red"></td>
+                    {% endfor %}
+                    {% for i in richard %}
+                        <td style="background-color: green"></td>
+                    {% endfor %}
+                </tr>
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+            </table>
+            <a href="/game/privacy/" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+        </div>
+    </div>
+{% endblock %}

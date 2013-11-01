@@ -1,14 +1,12 @@
-from django.conf.urls import patterns, include, url
-
-# Uncomment the next two lines to enable the admin:
+from django.conf.urls import patterns, url, include
+from game import views
 from django.contrib import admin
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'spank.views.home', name='home'),
-    # url(r'^spank/', include('spank.foo.urls')),
+
+    url(r'^spank/$', views.spank, name='spank'),
     url(r'^game/', include('game.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -6,12 +6,13 @@
     <div data-role="page" id="multiply">
         <div data-role="content" class="content">
             <div class="process">
-                <form action="bye/" method="post">{% csrf_token %}
+                <form action="/game/bye/" method="post">{% csrf_token %}
                     <div class="invitations">
                        {% for i in factor %}
-                        <label for="id_education">Email ami n°{{ i|add:"1" }}</label>
-                        <input type="text" name="email_{{ i|add:"1" }}"><br>
-                    {% endfor %}
+                           <label for="email_{{ i }}">Email ami n°{{ i|add:"1" }}</label>
+                           <input type="hidden" name="factor" value="{{ factor_id }}">
+                           <input type="text" name="email_{{ i }}"><br>
+                        {% endfor %}
                     </div>
                     <input type="submit" value="Suite" data-icon="arrow-r"/>
                 </form>

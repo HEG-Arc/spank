@@ -1,0 +1,11 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="bye">
+        <div data-role="content" class="content">
+            {% load qr_tags %}
+            {% qr_from_text "text" "m" %}
+    </div>
+{% endblock %}

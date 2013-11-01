@@ -4,14 +4,17 @@
 
 {% block content %}
     <div data-role="page" id="bye">
-        <div data-role="header">
-            <h1>Détective Spank</h1>
-        </div>
         <div data-role="content" class="content">
-
-        </div>
-        <div data-role="footer">
-            <h4>Copyright HE-ARC 2013</h4>
+            <div class="qrcode">
+                {% load qr_tags %}
+                {% qr_from_object user "m" %}
+            </div>
+            <div id="target" class="speech-qrcode">
+                <p class="triangle-right right">Super! et merci encore! Tu peux maintenant générer un QR-Code qui te donnera accès à un prix instantané, à récupérer sur le stand de la Haute Ecole de Gestion Arc</p>
+            </div>
+            <div class="character-qrcode">
+                <img src="{%  static "game/img/Spank.gif" %}"/>
+            </div>
         </div>
     </div>
 {% endblock %}

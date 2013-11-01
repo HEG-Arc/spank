@@ -4,6 +4,11 @@ from django import forms
 from django.forms import TextInput, Select
 
 
+class Visit(models.Model):
+    session_number = models.CharField(max_length=500, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 class User(models.Model):
     R = " "
     F = "F"
@@ -26,11 +31,14 @@ class User(models.Model):
     origin = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return "/game/qrcode/%i/" % self.pk
+
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        exclude = ["number", "auth_accepeted", "auth_accepted_lvl2" "created_at", "modified_at", "badge_modified"]
+        exclude = ["number", "auth_accepeted", "created_at"]
         widgets = {
             'gender': Select(attrs={'data-native-menu': 'false', 'data-placeholder': 'true', 'placeholder': 'Selectionnez...'}),
             'lastname': TextInput(attrs={'placeholder': 'Nom'}),
@@ -47,6 +55,7 @@ class UserForm(forms.ModelForm):
             'origin': TextInput(attrs={'placeholder': 'Origine'}),
         }
 
+
 class Poll(models.Model):
     question = models.TextField()
     template = models.TextField()
@@ -55,6 +64,7 @@ class Poll(models.Model):
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.question
 
+
 class Choice(models.Model):
     number = models.CharField(max_length=500, blank=True, null=True)
     choice_text = models.CharField(max_length=200, blank=True, null=True)
@@ -62,13 +72,21 @@ class Choice(models.Model):
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.choice_text
 
+
 class Answer(models.Model):
     user = models.ForeignKey(User)
     poll = models.ForeignKey(Poll)
     choice = models.ForeignKey(Choice)
     created_at = models.DateTimeField(auto_now_add=True)
 
+
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         exclude = ["user", "poll", "choice", "created_at"]
+
+
+class Friend(models.Model):
+    user = models.ForeignKey(User)
+    email = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)

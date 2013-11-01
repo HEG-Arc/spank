@@ -1,9 +1,25 @@
-from django.contrib.redirects.models import Redirect
 from django.http import HttpResponse, Http404
-from django.shortcuts import render, render_to_response, redirect
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.template import RequestContext, loader
-from game.models import Poll, Choice, User, UserForm, Answer
+from game.models import Poll, Choice, User, UserForm, Answer, Visit, Friend
+
+import urllib
+from django import template
+from django.template.defaultfilters import stringfilter
+from django.utils.html import conditional_escape
+from django.utils.safestring import mark_safe
+
+register = template.Library()
+
+@register.filter
+@stringfilter
+
+
+def spank(request):
+    visit = Visit()
+    visit.session_number = request.session.session_key
+    visit.save()
+    return redirect('/game/permissions')
 
 
 def page1(request):
@@ -59,19 +75,56 @@ def thanks(request):
 
 
 def questions(request):
-    poll = Poll.objects.order_by('sequence')[0]
+    poll = Poll.objects.filter(template='question').order_by('sequence')[0]
     if request.method == 'POST':
         p = request.POST
+        poll = Poll.objects.filter(sequence=p['sequence'], template='question')[0]
         if p.has_key("answer"):
             answer = Answer(user=request.session['user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
             answer.save()
-        if p.has_key("sequence"):
-            sequence = p['sequence']
-            poll = Poll.objects.filter(sequence=sequence)[0]
+        if p.has_key("next"):
+            sequence = p['next']
+            poll = Poll.objects.filter(sequence=sequence, template='question')[0]
         else:
-            return redirect('/game/process')
+            return redirect('/game/chart')
 
-    template = loader.get_template('game/question_big.html')
+    template = loader.get_template('game/question.html')
+    context = RequestContext(request, {
+        'poll': poll,
+    })
+    return HttpResponse(template.render(context))
+
+def chart(request):
+    chiara = Answer.objects.get(user_id=request.session['user'].id, poll_id=1)
+    simone = Answer.objects.get(user_id=request.session['user'].id, poll_id=2)
+    richard = Answer.objects.get(user_id=request.session['user'].id, poll_id=3)
+    template = loader.get_template('game/chart.html')
+    context = RequestContext(request, {
+        'chiaragreen': range(int(chiara.choice_id)),
+        'chiara': range(int(5-chiara.choice_id)),
+        'simonegreen': range(int(simone.choice_id)),
+        'simone': range(int(5-simone.choice_id)),
+        'richardgreen': range(int(richard.choice_id)),
+        'richard': range(int(5-richard.choice_id)),
+    })
+    return HttpResponse(template.render(context))
+
+
+def privacy(request):
+    poll = Poll.objects.filter(template='privacy').order_by('sequence')[0]
+    if request.method == 'POST':
+        p = request.POST
+        poll = Poll.objects.filter(sequence=p['sequence'], template='privacy')[0]
+        if p.has_key("answer"):
+            answer = Answer(user=request.session['user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
+            answer.save()
+        if p.has_key("next"):
+            sequence = p['next']
+            poll = Poll.objects.filter(sequence=sequence, template='privacy')[0]
+        else:
+            return redirect('/game/interesting')
+
+    template = loader.get_template('game/question.html')
     context = RequestContext(request, {
         'poll': poll,
     })
@@ -82,5 +135,22 @@ def multiply(request, factor_id):
     template = loader.get_template('game/multiply.html')
     context = RequestContext(request, {
         'factor': range(int(factor_id)),
+        'factor_id': factor_id,
+    })
+    return HttpResponse(template.render(context))
+
+
+def bye(request):
+    if request.method == 'POST':
+        p = request.POST
+        for i in range(int(p['factor'])):
+            friend = Friend()
+            friend.email = p['email_' + str(i)]
+            friend.user = request.session['user']
+            friend.save()
+
+    template = loader.get_template('game/bye.html')
+    context = RequestContext(request, {
+        'user': request.session['user'],
     })
     return HttpResponse(template.render(context))

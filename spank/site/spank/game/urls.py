@@ -29,4 +29,6 @@ urlpatterns = patterns('',
     url(r'^page18$', TemplateView.as_view(template_name='game/18.html'), name='page18'),
     url(r'^roulette/$', TemplateView.as_view(template_name='game/roulette.html'), name='roulette'),
     url(r'^multiply/(?P<factor_id>\d+)/$', views.multiply, name='multiply'),
+    url(r'^bye/$', views.bye, name='bye'),
+    url(r'^qrcode/$', TemplateView.as_view(template_name='game/qrcode.html'), name='qrcode'),
 )

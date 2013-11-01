@@ -83,10 +83,31 @@
     height: 120px;
 }
 
+.character-lickert
+{
+    left:30%;
+    bottom:95px;
+    position:absolute !important;
+    top: auto !important;
+    width:78%;
+}
+
+.character-lickert img
+{
+    width:180px;
+    height: 180px;
+}
+
+.suspect
+{
+    text-align: center;
+}
+
 .suspect img
 {
     width:100%;
     height: auto;
+    max-width:400px;
 }
 
 .process
@@ -154,6 +175,34 @@
     width:98%;
 }
 
+/* THE CHART
+------------------------------------------------------------------------------------------------------------------------------- */
+
+.chart
+{
+    min-height: 400px;
+    min-width: 300px;
+}
+
+.chart td
+{
+    text-align: center;
+    width: 20em;
+}
+
+.chart .spacing td
+{
+    height:10px;
+}
+
+.chart img
+{
+    max-height: 100px;
+    max-width: 100px;
+}
+
+
+
 /* THE EMAIL INVITATION FORM
 ------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -162,6 +211,47 @@
     overflow : auto;
     left:1%;
     width:98%;
+}
+
+
+/* THE QRCODE GENERATION
+------------------------------------------------------------------------------------------------------------------------------- */
+
+.qrcode
+{
+    text-align: center;
+}
+
+.qrcode img
+{
+    width:100%;
+    height: auto;
+    max-width:400px;
+}
+
+.speech-qrcode
+{
+    left:1%;
+    bottom:0px;
+    position:absolute !important;
+    top: auto !important;
+    width:80%;
+    font-size: 0.8em;
+}
+
+.character-qrcode
+{
+    left:70%;
+    bottom:0px;
+    position:absolute !important;
+    top: auto !important;
+    width:78%;
+}
+
+.character-qrcode img
+{
+    width:120px;
+    height: 120px;
 }
 
 
