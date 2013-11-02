@@ -1,0 +1,83 @@
+{% extends "booth/master-booth.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1>HEG Arc - Informatique de gestion</h1>
+
+<p>Best academic program in town!</p>
+
+
+            <div class="detective-badge">
+                <div class="title">
+                    <h2>{{ player.lastname|upper }}, {{ player.firstname }}</h2>
+                </div>
+                <div class="basic-information">
+                    <span class="id-photo">
+                        <img src="{%  static "game/img/badge.png" %}" />
+                    </span>
+                    <span class="address">
+                        {{ player.address }}</br>
+                        {{ player.postcode }} {{ player.locality }}</br>
+                        {{ player.country }}
+                    </span>
+                </div>
+                <div class="information">
+                    <b>Sexe :</b> {{ player.gender }}</br>
+                    <b>Taille :</b> {{ player.height }}</br>
+                    <b>Poids :</b> {{ player.weight }}</br>
+                    <b>Signe(s) distinctif(s) :</b> {{ player.distinctive_signs }}</br>
+                    <b>Formation :</b> {{ player.education }}</br>
+                    <b>Email :</b> {{ player.email }}</br>
+                    <b>Origine :</b> {{ player.origin }}
+                </div>
+            </div>
+
+    <table class="chart">
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img src="{%  static "game/img/Chiara.jpg" %}"/></td>
+                    {% for i in chiaragreen %}
+                        <td style="background-color: red"></td>
+                    {% endfor %}
+                    {% for i in chiara %}
+                        <td style="background-color: green"></td>
+                    {% endfor %}
+                </tr>
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img src="{%  static "game/img/Simone.jpg" %}"/></td>
+                    {% for i in simonegreen %}
+                        <td style="background-color: red"></td>
+                    {% endfor %}
+                    {% for i in simone %}
+                        <td style="background-color: green"></td>
+                    {% endfor %}
+                </tr>
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img src="{%  static "game/img/Richard.jpg" %}"/></td>
+                    {% for i in richardgreen %}
+                        <td style="background-color: red"></td>
+                    {% endfor %}
+                    {% for i in richard %}
+                        <td style="background-color: green"></td>
+                    {% endfor %}
+                </tr>
+                <tr class="spacing">
+                    <td></td>
+                </tr>
+            </table>
+
+
+<h2>Pressez sur le bumper pour valider votre enquête</h2>
+
+<center><a href="{% url "booth-prize" player.id %}"><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></a></center>
+
+{% endblock content %}

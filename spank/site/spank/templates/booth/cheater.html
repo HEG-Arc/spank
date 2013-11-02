@@ -1,0 +1,14 @@
+{% extends "booth/master-booth.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<h1>HEG Arc - Informatique de gestion</h1>
+
+<p>Best academic program in town!</p>
+
+<h2>Bastard, you are trying to cheat!!!</h2>
+
+<p>You already won a beautiful <b>{{ player.prize.label }}</b></p>
+
+<center><a href="{% url "booth-adscreen" %}"><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></a></center>
+{% endblock content %}

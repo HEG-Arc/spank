@@ -1,7 +1,26 @@
-# Django settings for spank project.
+"""Common settings and globals."""
+
+import os
+from os.path import abspath, basename, dirname, join, normpath
+from sys import path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+########## PATH CONFIGURATION
+# Absolute filesystem path to the Django project directory:
+DJANGO_ROOT = dirname(dirname(abspath(__file__)))
+
+# Absolute filesystem path to the top-level project folder:
+SITE_ROOT = dirname(DJANGO_ROOT)
+
+# Site name:
+SITE_NAME = basename(DJANGO_ROOT)
+
+# Add our project to our pythonpath, this way we don't need to type our project
+# name in our dotted import paths:
+path.append(DJANGO_ROOT)
+########## END PATH CONFIGURATION
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -56,30 +75,26 @@ MEDIA_ROOT = ''
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = ''
 
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/home/sites/appagoo/spank/site/static/assets/'
+########## STATIC FILE CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+STATIC_ROOT = normpath(join(SITE_ROOT, '../static', 'assets'))
 
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 
-# Additional locations of static files
+# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    normpath(join(SITE_ROOT, 'spank', 'static')),
+    normpath(join(SITE_ROOT, 'spank', 'game', 'static')),
 )
 
-# List of finder classes that know how to find static files in
-# various locations.
+# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+########## END STATIC FILE CONFIGURATION
+
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '@w1*4p**b$yo&amp;h#17oayepx^h4!&amp;s0=g_xf+805-$4h$f)t4e$'
@@ -106,23 +121,30 @@ ROOT_URLCONF = 'spank.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 # WSGI_APPLICATION = 'spank.wsgi.application'
 
-import os
-TEMPLATE_DIR = '/'.join([
-    os.path.abspath( os.path.dirname( __file__ )),
-    'templates',
-])
-
-TEMPLATE_DIRS = (
-    TEMPLATE_DIR,
+########## TEMPLATE CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = [
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.static",
-    "django.core.context_processors.request",
-]
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
+TEMPLATE_DIRS = (
+    normpath(join(SITE_ROOT, 'spank', 'templates')),
+)
+########## END TEMPLATE CONFIGURATION
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -140,6 +162,7 @@ INSTALLED_APPS = (
     'game',
     'south',
     'qrcode',
+    'booth',
 )
 
 LOGIN_REDIRECT_URL = '/'

@@ -139,6 +139,6 @@ def bye(request):
 
     template = loader.get_template('game/bye.html')
     context = RequestContext(request, {
-        'user': request.session['spank_user'],
+        'player': request.session['spank_user'],
     })
     return HttpResponse(template.render(context))

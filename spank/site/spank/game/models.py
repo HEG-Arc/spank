@@ -3,6 +3,7 @@ from django.db import models
 from django import forms
 from django.forms import TextInput, Select
 
+from booth.models import Prize
 
 class Visit(models.Model):
     session_number = models.CharField(max_length=500, blank=True, null=True)
@@ -30,6 +31,7 @@ class User(models.Model):
     email = models.CharField(max_length=100, blank=True, null=True)
     origin = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    prize = models.ForeignKey(Prize, blank=True, null=True)
 
     def get_absolute_url(self):
         return "/game/qrcode/%i/" % self.pk

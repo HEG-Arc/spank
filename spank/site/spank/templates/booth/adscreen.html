@@ -1,0 +1,17 @@
+{% extends "booth/master-booth.html" %}
+
+{% block content %}
+
+<h1>HEG Arc - Informatique de gestion</h1>
+
+<p>Best academic program in town!</p>
+
+<form action="{% url 'booth-scanqr' %}" method="POST">
+<input type="text" name="scanqr" autofocus="autofocus" />
+<input type="submit" />
+{% csrf_token %}
+</form>
+
+<img src="{{ STATIC_URL }}booth/img/IG.jpg" />
+
+{% endblock content %}
