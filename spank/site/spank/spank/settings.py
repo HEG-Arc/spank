@@ -161,7 +161,7 @@ INSTALLED_APPS = (
     'dh5mbp',
     'game',
     'south',
-    'qrcode',
+    #'qrcode',
     'booth',
 )
 
