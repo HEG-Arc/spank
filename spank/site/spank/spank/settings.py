@@ -77,7 +77,7 @@ MEDIA_URL = ''
 
 ########## STATIC FILE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = normpath(join(SITE_ROOT, '../static', 'assets'))
+STATIC_ROOT = normpath(join(SITE_ROOT, 'static', 'assets'))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
@@ -85,7 +85,6 @@ STATIC_URL = '/static/'
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
     normpath(join(SITE_ROOT, 'spank', 'static')),
-    normpath(join(SITE_ROOT, 'spank', 'game', 'static')),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
@@ -161,7 +160,7 @@ INSTALLED_APPS = (
     'dh5mbp',
     'game',
     'south',
-    'qrcode',
+    #'qrcode',
     'booth',
 )
 
