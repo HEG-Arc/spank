@@ -1,0 +1,17 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="page15">
+        <div data-role="content" class="content">
+            <div id="target" class="speech">
+                <p class="triangle-right">Hello, moi c’est Martin ! Comme je le disais à Spank, depuis les dernières révélations sur l’espionnage des USA, je pense que les fabricants de téléphones et les développeurs d’applications sont des espions à la botte des grandes puissances. Ils utilisent nos téléphones pour nous espionner. Regardez ce qu’ils ont fait à Angela Merkel !</p>
+            </div>
+            <div class="character">
+                <img src="{%  static "game/img/Martin.gif" %}"/>
+            </div>
+            <a href="/game/page17" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+        </div>
+    </div>
+{% endblock %}

@@ -3,15 +3,15 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div data-role="page" id="page2">
+    <div data-role="page" id="page22">
         <div data-role="content" class="content">
             <div id="target" class="speech">
-                <p class="triangle-right">Avant de pouvoir m’accompagner dans cette enquête, il va falloir te munir de ton badge de détective. Regarde le mien…</p>
+                <p class="triangle-right">Merci ! Je vais de ce pas chez {{ coupable }} afin de l’interroger pour essayer de découvrir son mobile…</p>
             </div>
             <div class="character">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="page3" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="/game/access" data-role="button" data-icon="arrow-r" class="next">Suite</a>
         </div>
     </div>
 {% endblock %}

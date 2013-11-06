@@ -1,0 +1,17 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="page19">
+        <div data-role="content" class="content">
+            <div id="target" class="speech">
+                <p class="triangle-right">Avec ce que l’on a appris, le smartphone devient suspect ! Il pourrait être utilisé pour espionner Nabina à son insu… Non mais allo quoi ! Un téléphone qui espionne c’est comme une fille qui n’a pas de shampoing…</p>
+            </div>
+            <div class="character">
+                <img src="{%  static "game/img/Spank.gif" %}"/>
+            </div>
+            <a href="/game/page20" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+        </div>
+    </div>
+{% endblock %}

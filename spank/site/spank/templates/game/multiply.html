@@ -5,6 +5,7 @@
 {% block content %}
     <div data-role="page" id="multiply">
         <div data-role="content" class="content">
+            Bravo, tu peux multiplier tes chances par {{ prize }} ! Aides-nous à clôturer cette enquête au plus vite en entrant {{ prize }} adresses e-mails de tes amis afin qu’ils puissent, eux aussi, m’aider dans cette enquête. Avec chaque participant tu augmentes tes chances !!!
             <div class="process">
                 <form action="/game/bye/" method="post">{% csrf_token %}
                     <div class="invitations">
