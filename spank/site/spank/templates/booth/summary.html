@@ -3,6 +3,14 @@
 
 {% block content %}
 
+<script type="text/javascript">
+function bumperPress()
+{
+    window.location.href = '{% url "booth-prize" player.id %}';
+    return false;
+}
+</script>
+
 <h1>HEG Arc - Informatique de gestion</h1>
 
 <p>Best academic program in town!</p>
@@ -78,6 +86,6 @@
 
 <h2>Pressez sur le bumper pour valider votre enquête</h2>
 
-<center><a href="{% url "booth-prize" player.id %}"><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></a></center>
+<center><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></center>
 
 {% endblock content %}

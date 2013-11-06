@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!--
 	HTML5 Canvas + JavaScript winning wheel
 	Created by Douglas McKechie @ http://www.dougtesting.net as an example.
@@ -9,29 +10,38 @@
 	<head>
 		<title>Appagoo</title>
 		<link rel="stylesheet" href="{{ STATIC_URL }}booth/css/main.css" type="text/css" />
-		<script type='text/javascript' src='{{ STATIC_URL }}booth/js/winwheel_1.2.js'></script>
+        <script type="text/javascript">
+            var bumpSeq = "spin";
+            function bumperPress(bumpSeq)
+            {
+                if (bumpSeq == "spin")
+                {
+                    startSpin({{ prize.code }});
+                    document.getElementById("winwheel").play();
+                }
+                else if (bumpSeq == "bye")
+                {
+                    window.location.href = {% url "booth-adscreen" %};
+                    return false;
+                }
+            }
+        </script>
+        <script type='text/javascript' src='{{ STATIC_URL }}booth/js/winwheel_1.2.js'></script>
 	</head>
-	<body>
-
+	<body onKeyPress="if (event.keyCode == 13) bumperPress(bumpSeq)">
+        <audio id="winwheel" src="{% static "booth/audio/winwheel.ogg" %}" preload="auto"></audio>
+        <audio id="winsound" src="{% static "booth/audio/win.ogg" %}" preload="auto"></audio>
 		<div align="center">
 			<table cellpadding="0" cellspacing="0" border="0">
 				<tr>
-					<td>
-						<div class="power_controls">
-							<img id="spin_button" src="{{ STATIC_URL }}booth/img/spin_off.png" alt="Spin" onClick="startSpin({{ prize.code }});" width="100px" />
-						</div>
-					</td>
 					<td width="438" height="582" class="the_wheel" align="center" valign="center">
 						<canvas class="the_canvas" id="myDrawingCanvas" width="434" height="434">
 							<p class="noCanvasMsg" align="center">Sorry, your browser doesn't support canvas.<br />Please try another.</p>
 						</canvas>
 					</td>
-					<td>
-
-					</td>
 				</tr>
                 <tr>
-                    <td colspan="3">
+                    <td>
                         DEBUG<br />
                         Player: {{ player.id }}<br />
                         Prize: {{ prize.code }} / {{ prize.label }}

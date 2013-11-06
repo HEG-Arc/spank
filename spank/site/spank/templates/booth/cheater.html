@@ -2,6 +2,15 @@
 {% load staticfiles %}
 {% block content %}
 
+
+<script type="text/javascript">
+function bumperPress()
+{
+    window.location.href = {% url "booth-adscreen" %};
+    return false;
+}
+</script>
+
 <h1>HEG Arc - Informatique de gestion</h1>
 
 <p>Best academic program in town!</p>
@@ -10,5 +19,6 @@
 
 <p>You already won a beautiful <b>{{ player.prize.label }}</b></p>
 
-<center><a href="{% url "booth-adscreen" %}"><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></a></center>
+<center><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></center>
 {% endblock content %}
+</body>

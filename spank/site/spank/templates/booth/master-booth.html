@@ -5,7 +5,7 @@
     <title></title>
     <link href="{% static "game/css/main.css"%}" rel="stylesheet" type="text/css" media="screen" />
 </head>
-<body>
+<body onKeyPress="if (event.keyCode == 13) bumperPress()">
 {% if messages %}
 <div id="messages">
     <ul class="messages">

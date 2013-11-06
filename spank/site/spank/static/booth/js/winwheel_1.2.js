@@ -213,8 +213,8 @@ function startSpin(determinedValue)
 		randomLastThreshold = Math.floor(90 + (Math.random() * 90));
 		
 		// Set Spin button image back to disabled one, since can't click again until the wheel is reset.
-		document.getElementById('spin_button').src       = spinButtonImgOff;
-		document.getElementById('spin_button').className = "";
+		//document.getElementById('spin_button').src       = spinButtonImgOff;
+		//document.getElementById('spin_button').className = "";
 		
 		// Now kick off the spinning of the wheel by calling the doSpin function.
 		wheelState = 'spinning';
@@ -356,10 +356,12 @@ function doSpin()
 			{
 				if ((relativeAngle >= prizes[x]['startAngle']) && (relativeAngle <= prizes[x]['endAngle']))
 				{
+                    document.getElementById("winsound").play();
                     // change the innerHTML of a div to indicate the prize etc - up to you.
                     var prize = document.getElementById("prize");
                     // faire un hide/show du div... comme on connait déjà le prix...
-                    prize.innerHTML = "<h2>Vous avez gagné " + prizes[x]['name'] + "!</h2><a href='/booth/'><img src='/static/booth/img/bumper.jpg' width='100px' /></a>";
+                    prize.innerHTML = "<h2>Vous avez gagné " + prizes[x]['name'] + "!</h2>";
+                    bumpSeq = "bye";
 					break;
 				}
 			}
@@ -391,8 +393,8 @@ function powerSelected(powerLevel)
 		power = powerLevel;
 		
 		// Light up the spin button by changing it's source image and adding a clickable class to it.
-		document.getElementById('spin_button').src = spinButtonImgOn;
-		document.getElementById('spin_button').className = "clickable";
+		//document.getElementById('spin_button').src = spinButtonImgOn;
+		//document.getElementById('spin_button').className = "clickable";
 	}
 }
 
