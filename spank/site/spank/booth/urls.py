@@ -35,7 +35,5 @@ urlpatterns = patterns('',
     url(r'^qr/$', views.scanqr, name='booth-scanqr'),
     url(r'^summary/(?P<user_id>\d+)/$', views.summary, name='booth-summary'),
     url(r'^prize/(?P<user_id>\d+)/$', views.prize, name='booth-prize'),
-    url(r'^getprize/(?P<user_id>\d+)/$', views.get_prize, name='booth-get-prize'),
-    url(r'^testprize/$', views.get_random_prize, name='booth-test-prize'),
     url(r'^cheater/(?P<user_id>\d+)/$', views.cheater, name='booth-cheater'),
 )

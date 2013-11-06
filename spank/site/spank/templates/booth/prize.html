@@ -18,7 +18,7 @@
 				<tr>
 					<td>
 						<div class="power_controls">
-							<img id="spin_button" src="{{ STATIC_URL }}booth/img/spin_off.png" alt="Spin" onClick="startSpin();" width="100px" />
+							<img id="spin_button" src="{{ STATIC_URL }}booth/img/spin_off.png" alt="Spin" onClick="startSpin({{ prize.code }});" width="100px" />
 						</div>
 					</td>
 					<td width="438" height="582" class="the_wheel" align="center" valign="center">
@@ -39,10 +39,8 @@
                 </tr>
 			</table>
             <script>
-                var determinedValue = {{ prize.code }};
                 // Call function to draw the wheel face at it's initial position.
                 begin();
-
             </script>
         </div>
         <div id="prize" align="center">
