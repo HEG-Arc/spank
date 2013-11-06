@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="fr-CH" >
+<head>
+<title>Connexion | Site d'administration de Spank</title>
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/base.css"%}" />
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css"%}" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% static "admin/css/ie.css"%}" /><![endif]-->
+
+<script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script>
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class="login">
+
+<!-- Container -->
+<div id="container">
+
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+
+<h1 id="site-name">Administration de Spank</h1>
+
+        </div>
+    </div>
+    <!-- END Header -->
+    <!-- Content -->
+    <div id="content" class="colM">
+
+{% if form.errors %}
+<p class="errornote">
+    Veuillez compléter correctement les champs « nom d&#39;utilisateur » et « mot de passe » d&#39;un compte autorisé. Sachez que les deux champs peuvent être sensibles à la casse.
+</p>
+{% endif %}
+
+<div id="content-main">
+<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+  {% csrf_token %}
+  <div class="form-row">
+
+    <label for="id_username" class="required">Nom d&#39;utilisateur:</label> {{ form.username }}
+  </div>
+  <div class="form-row">
+
+    <label for="id_password" class="required">Mot de passe :</label> {{ form.password }}
+  </div>
+
+
+  <div class="submit-row">
+    <label>&nbsp;</label><input type="submit" value="Connexion" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </div>
+</form>
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+</div>
+
+
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

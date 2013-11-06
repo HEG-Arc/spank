@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^spank/', views.spank, name='spank'),
     url(r'^game/', include('game.urls')),
     url(r'^booth/', include('booth.urls')),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

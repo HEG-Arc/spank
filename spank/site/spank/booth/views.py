@@ -50,7 +50,7 @@ class PrizeForm(forms.Form):
     prize = forms.IntegerField()
 
 
-#@login_required()
+@login_required()
 def adscreen(request):
     #hire = get_object_or_404(Hire, pk=hire_id)
     return render_to_response('booth/adscreen.html', {
@@ -58,7 +58,7 @@ def adscreen(request):
     }, context_instance=RequestContext(request))
 
 
-#@login_required()
+@login_required()
 def scanqr(request):
     if request.method == 'POST':
         form = ScanQRForm(request.POST)
@@ -83,6 +83,7 @@ def scanqr(request):
     return HttpResponseRedirect(reverse('booth-adscreen'))
 
 
+@login_required()
 def summary(request, user_id):
     player = get_object_or_404(User, pk=user_id)
 
@@ -100,15 +101,19 @@ def summary(request, user_id):
     }, context_instance=RequestContext(request))
 
 
+@login_required()
 def prize(request, user_id):
     player = get_object_or_404(User, pk=user_id)
-    prize = get_random_prize()
+    random_prize = get_random_prize()
+    player.prize = random_prize
+    player.save()
     return render_to_response('booth/prize.html', {
         'player': player,
-        'prize': prize,
+        'prize': random_prize,
     }, context_instance=RequestContext(request))
 
 
+@login_required()
 def cheater(request, user_id):
     player = get_object_or_404(User, pk=user_id)
     return render_to_response('booth/cheater.html', {
@@ -122,7 +127,7 @@ def get_random_prize():
     prizes_dict = {}
     total_percent = 0
     for prize in prizes_list:
-        prizes_dict[prize.code] = prize.percentage
+        prizes_dict[prize.id] = prize.percentage
         if prize.percentage != 100:
             total_percent += prize.percentage
     # We build a list with all prizes
@@ -136,16 +141,5 @@ def get_random_prize():
                 weighted_prizes_list.append(p)
     # We randomly choose one prize in the list
     prize = weighted_prizes_list[randrange(len(weighted_prizes_list))]
-    random_prize = get_object_or_404(Prize, code=prize)
+    random_prize = get_object_or_404(Prize, pk=prize)
     return random_prize
-
-
-def get_prize(request, user_id):
-    player = get_object_or_404(User, pk=user_id)
-    new_prize = get_random_prize()
-    player.prize = new_prize
-    player.save()
-    new_prize.stock -= 1
-    new_prize.save()
-
-    return HttpResponse(new_prize.code, content_type="text/plain")

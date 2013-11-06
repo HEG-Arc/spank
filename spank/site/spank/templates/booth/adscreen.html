@@ -2,16 +2,35 @@
 
 {% block content %}
 
-<h1>HEG Arc - Informatique de gestion</h1>
+<script type='text/javascript' src='{{ STATIC_URL }}booth/js/jquery.min.js'></script>
+<script type='text/javascript' src='{{ STATIC_URL }}booth/js/jquery.cycle2.min.js'></script>
 
-<p>Best academic program in town!</p>
+<style type="text/css">
+  div#qrscan {
+      position: absolute;
+      z-index: 1;
+  }
+  div#slideshow {
+      position: absolute;
+      z-index: 2;
+  }
+    div#messages {
+      position: absolute;
+      z-index: 3;
+  }
+</style>
 
+<div id="qrscan">
 <form action="{% url 'booth-scanqr' %}" method="POST">
 <input type="text" name="scanqr" autofocus="autofocus" />
-<input type="submit" />
 {% csrf_token %}
 </form>
+</div>
 
-<img src="{{ STATIC_URL }}booth/img/IG.jpg" />
+<div id="slideshow" class="cycle-slideshow">
+    <img src="{{ STATIC_URL }}booth/img/IG1.png" />
+    <img src="{{ STATIC_URL }}booth/img/IG2.png" />
+    <img src="{{ STATIC_URL }}booth/img/IG3.png" />
+</div>
 
 {% endblock content %}
