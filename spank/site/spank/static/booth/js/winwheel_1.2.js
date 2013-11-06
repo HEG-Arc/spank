@@ -362,6 +362,8 @@ function doSpin()
                     var prize = document.getElementById("prize");
                     prize.innerHTML = "<h2>Vous avez gagné " + prizes[x]['name'] + "!</h2><a href='/booth/'><img src='/static/booth/img/bumper.jpg' width='100px' /></a>";
 					//alert("Vous avez gagné " + prizes[x]['name'] + "!");
+                    // var submit_result = new XMLHttpRequest();
+                    // Envoyer la requête AJAX pour enregistrer le gain... si réponse est 200, on affiche le message
 					break;
 				}
 			}
