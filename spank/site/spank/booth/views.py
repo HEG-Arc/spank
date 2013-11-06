@@ -21,26 +21,33 @@
 # along with appagoo.  If not, see <http://www.gnu.org/licenses/>.
 
 # Stdlib imports
+from random import randrange
 
 # Core Django imports
 from django import forms
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist
 
+
 # Third-party app imports
 
 # Appagoo imports
 from game.models import User, Answer
+from .models import Prize
 
 
 class ScanQRForm(forms.Form):
     scanqr = forms.CharField()
+
+
+class PrizeForm(forms.Form):
+    prize = forms.IntegerField()
 
 
 #@login_required()
@@ -95,8 +102,10 @@ def summary(request, user_id):
 
 def prize(request, user_id):
     player = get_object_or_404(User, pk=user_id)
+    prize = get_random_prize()
     return render_to_response('booth/prize.html', {
         'player': player,
+        'prize': prize,
     }, context_instance=RequestContext(request))
 
 
@@ -105,3 +114,38 @@ def cheater(request, user_id):
     return render_to_response('booth/cheater.html', {
         'player': player,
     }, context_instance=RequestContext(request))
+
+
+def get_random_prize():
+    prizes_list = Prize.objects.all().filter(stock__gt=0)
+    # We build a dict with all available prizes
+    prizes_dict = {}
+    total_percent = 0
+    for prize in prizes_list:
+        prizes_dict[prize.code] = prize.percentage
+        if prize.percentage != 100:
+            total_percent += prize.percentage
+    # We build a list with all prizes
+    weighted_prizes_list = []
+    for p in prizes_dict:
+        if prizes_dict[p] != 100:
+            for i in range(0, prizes_dict[p]):
+                weighted_prizes_list.append(p)
+        else:
+            for i in range(0, 100-total_percent):
+                weighted_prizes_list.append(p)
+    # We randomly choose one prize in the list
+    prize = weighted_prizes_list[randrange(len(weighted_prizes_list))]
+    random_prize = get_object_or_404(Prize, code=prize)
+    return random_prize
+
+
+def get_prize(request, user_id):
+    player = get_object_or_404(User, pk=user_id)
+    new_prize = get_random_prize()
+    player.prize = new_prize
+    player.save()
+    new_prize.stock -= 1
+    new_prize.save()
+
+    return HttpResponse(new_prize.code, content_type="text/plain")

@@ -30,9 +30,16 @@
 
 					</td>
 				</tr>
+                <tr>
+                    <td colspan="3">
+                        DEBUG<br />
+                        Player: {{ player.id }}<br />
+                        Prize: {{ prize.code }} / {{ prize.label }}
+                    </td>
+                </tr>
 			</table>
             <script>
-
+                var determinedValue = {{ prize.code }};
                 // Call function to draw the wheel face at it's initial position.
                 begin();
 

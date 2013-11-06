@@ -33,7 +33,6 @@ Version History:
 		also added variable to store the current state of the wheel - if spinning or not - so click of spin button while wheel is already 
 		spinning has no effect.
 */
-
 // --------------------------------
 // VARIABLES YOU CAN ALTER...
 var canvasId         = "myDrawingCanvas";   // Id of the canvas element on the page the wheel is to be rendered on.
@@ -43,7 +42,7 @@ var spinButtonImgOff = "/static/booth/img/spin_off.png";
 var theSpeed         = 20; 		 // Controls how often the spin function is called (is miliseconds value for animation timer).
 var pointerAngle     = 0;  	 	 // The angle / location around the wheel where the pointer indicaing the prize is located. Can be any value you like, 0 is top (12 oclock) 180 is bottom (6 o'clock) etc.
 var doPrizeDetection = true; 	 // Set to true if you want the code to detect the prize the user has won when the spinning has stopped. Prizes need to be specified in the prizes array.
-var spinMode         = "random"; // Values can be: random, determinedAngle, determinedPrize.
+var spinMode         = "determinedPrize"; // Values can be: random, determinedAngle, determinedPrize.
 var determinedGetUrl = "";  	 // Set to URL of the server-side process to load via ajax when spinMode is determinedAngle or determinedPrize.
 /*
 	The following files included in the download can be used to test the different modes (you will need an Apache server; I use XAMPP on my local machine).
@@ -357,13 +356,10 @@ function doSpin()
 			{
 				if ((relativeAngle >= prizes[x]['startAngle']) && (relativeAngle <= prizes[x]['endAngle']))
 				{
-					// Do something with the knowlege. For this example the user is just alerted, but you could play a sound,
-					// change the innerHTML of a div to indicate the prize etc - up to you.
+                    // change the innerHTML of a div to indicate the prize etc - up to you.
                     var prize = document.getElementById("prize");
+                    // faire un hide/show du div... comme on connait déjà le prix...
                     prize.innerHTML = "<h2>Vous avez gagné " + prizes[x]['name'] + "!</h2><a href='/booth/'><img src='/static/booth/img/bumper.jpg' width='100px' /></a>";
-					//alert("Vous avez gagné " + prizes[x]['name'] + "!");
-                    // var submit_result = new XMLHttpRequest();
-                    // Envoyer la requête AJAX pour enregistrer le gain... si réponse est 200, on affiche le message
 					break;
 				}
 			}
