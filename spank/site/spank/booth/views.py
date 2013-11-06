@@ -50,8 +50,7 @@ class PrizeForm(forms.Form):
     prize = forms.IntegerField()
 
 
-#@login_required()
-# TODO: Add support for @login_required
+@login_required()
 def adscreen(request):
     #hire = get_object_or_404(Hire, pk=hire_id)
     return render_to_response('booth/adscreen.html', {
@@ -59,7 +58,7 @@ def adscreen(request):
     }, context_instance=RequestContext(request))
 
 
-#@login_required()
+@login_required()
 def scanqr(request):
     if request.method == 'POST':
         form = ScanQRForm(request.POST)
@@ -84,6 +83,7 @@ def scanqr(request):
     return HttpResponseRedirect(reverse('booth-adscreen'))
 
 
+@login_required()
 def summary(request, user_id):
     player = get_object_or_404(User, pk=user_id)
 
@@ -101,6 +101,7 @@ def summary(request, user_id):
     }, context_instance=RequestContext(request))
 
 
+@login_required()
 def prize(request, user_id):
     player = get_object_or_404(User, pk=user_id)
     random_prize = get_random_prize()
@@ -112,6 +113,7 @@ def prize(request, user_id):
     }, context_instance=RequestContext(request))
 
 
+@login_required()
 def cheater(request, user_id):
     player = get_object_or_404(User, pk=user_id)
     return render_to_response('booth/cheater.html', {
