@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.template import RequestContext, loader
 from game.models import Poll, Choice, User, UserForm, Answer, Visit, Friend
 
+
 def spank(request):
     visit = Visit()
     visit.session_number = request.session.session_key
@@ -62,25 +63,109 @@ def thanks(request):
         raise Http404
 
 
-def questions(request):
-    poll = Poll.objects.filter(template='question').order_by('sequence')[0]
+def question1(request):
+    poll = Poll.objects.get(template='question', sequence=1)
     if request.method == 'POST':
         p = request.POST
-        poll = Poll.objects.filter(sequence=p['sequence'], template='question')[0]
-        if p.has_key("answer"):
-            answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
+        poll = Poll.objects.get(sequence=p['sequence'], template='question')
+        if "answer" in p:
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.get(number=p["answer"]))
             answer.save()
-        if p.has_key("next"):
-            sequence = p['next']
-            poll = Poll.objects.filter(sequence=sequence, template='question')[0]
-        else:
-            return redirect('/game/chart')
 
-    template = loader.get_template('game/question.html')
+    template = loader.get_template('game/question1.html')
     context = RequestContext(request, {
         'poll': poll,
     })
     return HttpResponse(template.render(context))
+
+
+def page12(request):
+    if request.method == 'POST':
+        p = request.POST
+        poll = Poll.objects.get(template='question', sequence=1)
+        if "answer" in p:
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.get(number=p["answer"]))
+            answer.save()
+
+        template = loader.get_template('game/12.html')
+        context = RequestContext(request, {
+            'poll': poll,
+        })
+        return HttpResponse(template.render(context))
+    else:
+        raise Http404
+
+
+def question2(request):
+    poll = Poll.objects.get(template='question', sequence=2)
+    if request.method == 'POST':
+        p = request.POST
+        poll = Poll.objects.get(sequence=p['sequence'], template='question')
+        if "answer" in p:
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.get(number=p["answer"]))
+            answer.save()
+
+    template = loader.get_template('game/question2.html')
+    context = RequestContext(request, {
+        'poll': poll,
+    })
+    return HttpResponse(template.render(context))
+
+
+def page13(request):
+    if request.method == 'POST':
+        p = request.POST
+        poll = poll = Poll.objects.get(template='question', sequence=2)
+        if "answer" in p:
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.get(number=p["answer"]))
+            answer.save()
+        template = loader.get_template('game/13.html')
+        context = RequestContext(request, {
+            'poll': poll,
+        })
+        return HttpResponse(template.render(context))
+    else:
+        raise Http404
+
+
+def question3(request):
+    poll = Poll.objects.get(template='question', sequence=3)
+    if request.method == 'POST':
+        p = request.POST
+        poll = Poll.objects.get(sequence=p['sequence'], template='question')
+        if "answer" in p:
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.get(number=p["answer"]))
+            answer.save()
+
+    template = loader.get_template('game/question3.html')
+    context = RequestContext(request, {
+        'poll': poll,
+    })
+    return HttpResponse(template.render(context))
+
+
+def page14(request):
+    poll = Poll.objects.get(template='question', sequence=3)
+    if request.method == 'POST':
+        p = request.POST
+        poll = Poll.objects.get(sequence=p['sequence'], template='question')
+        if "answer" in p:
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.get(number=p["answer"]))
+            answer.save()
+
+        template = loader.get_template('game/14.html')
+        context = RequestContext(request, {
+            'poll': poll,
+        })
+        return HttpResponse(template.render(context))
+    else:
+        raise Http404
 
 def chart(request):
     chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
@@ -89,28 +174,66 @@ def chart(request):
     template = loader.get_template('game/chart.html')
     context = RequestContext(request, {
         'chiaragreen': range(int(chiara.choice_id)),
-        'chiara': range(int(5-chiara.choice_id)),
+        'chiara': range(int(5 - chiara.choice_id)),
         'simonegreen': range(int(simone.choice_id)),
-        'simone': range(int(5-simone.choice_id)),
+        'simone': range(int(5 - simone.choice_id)),
         'richardgreen': range(int(richard.choice_id)),
-        'richard': range(int(5-richard.choice_id)),
+        'richard': range(int(5 - richard.choice_id)),
     })
     return HttpResponse(template.render(context))
 
 
-def privacy(request):
-    poll = Poll.objects.filter(template='privacy').order_by('sequence')[0]
+def chart2(request):
+    chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
+    simone = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=2)
+    richard = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=3)
+    template = loader.get_template('game/chart2.html')
+    context = RequestContext(request, {
+        'chiaragreen': range(int(chiara.choice_id)),
+        'chiara': range(int(5 - chiara.choice_id)),
+        'simonegreen': range(int(simone.choice_id)),
+        'simone': range(int(5 - simone.choice_id)),
+        'richardgreen': range(int(richard.choice_id)),
+        'richard': range(int(5 - richard.choice_id)),
+    })
+    return HttpResponse(template.render(context))
+
+
+def privacy1(request):
+    poll = Poll.objects.filter(template='privacy1').order_by('sequence')[0]
     if request.method == 'POST':
         p = request.POST
-        poll = Poll.objects.filter(sequence=p['sequence'], template='privacy')[0]
+        poll = Poll.objects.filter(sequence=p['sequence'], template='privacy1')[0]
         if p.has_key("answer"):
-            answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.filter(number=p["answer"])[0])
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.filter(number=p["answer"])[0])
             answer.save()
         if p.has_key("next"):
             sequence = p['next']
-            poll = Poll.objects.filter(sequence=sequence, template='privacy')[0]
+            poll = Poll.objects.filter(sequence=sequence, template='privacy1')[0]
         else:
-            return redirect('/game/interesting')
+            return redirect('/game/page18')
+
+    template = loader.get_template('game/question.html')
+    context = RequestContext(request, {
+        'poll': poll,
+    })
+    return HttpResponse(template.render(context))
+
+def privacy2(request):
+    poll = Poll.objects.filter(template='privacy2').order_by('sequence')[0]
+    if request.method == 'POST':
+        p = request.POST
+        poll = Poll.objects.filter(sequence=p['sequence'], template='privacy2')[0]
+        if p.has_key("answer"):
+            answer = Answer(user=request.session['spank_user'], poll=poll,
+                            choice=Choice.objects.filter(number=p["answer"])[0])
+            answer.save()
+        if p.has_key("next"):
+            sequence = p['next']
+            poll = Poll.objects.filter(sequence=sequence, template='privacy2')[0]
+        else:
+            return redirect('/game/page22')
 
     template = loader.get_template('game/question.html')
     context = RequestContext(request, {
