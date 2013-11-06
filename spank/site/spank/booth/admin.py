@@ -23,9 +23,11 @@
 # Stdlib imports
 
 # Core Django imports
+from django.contrib import admin
 
 # Third-party app imports
 
 # Appagoo imports
+from .models import Prize
 
-
+admin.site.register(Prize)
