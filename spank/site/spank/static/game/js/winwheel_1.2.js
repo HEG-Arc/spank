@@ -362,7 +362,7 @@ function doSpin()
 					// Do something with the knowlege. For this example the user is just alerted, but you could play a sound,
 					// change the innerHTML of a div to indicate the prize etc - up to you.
 					alert("Félicitation! vous avez la possibilité de multiplier vos chances de gains par  " + prizes[x]['name'] + "! Il vous suffit pour cela d'inviter " + prizes[x]['name'] + " amis à participer au jeu! Chaque invitation envoyée correspond à une chance supplémentaire!");
-                    $("#chances").prop("href", "../multiply/" + prizes[x]['name'])
+                    $("#chances").prop("href", "http://appagoo.ig.he-arc.ch/game/multiply/" + prizes[x]['name'])
                     $("#chances").show();
 					break;
 				}
