@@ -357,6 +357,9 @@ function doSpin()
 				if ((relativeAngle >= prizes[x]['startAngle']) && (relativeAngle <= prizes[x]['endAngle']))
 				{
                     document.getElementById("winsound").play();
+                    var xhrl = new XMLHttpRequest();
+                    xhrl.open("GET", "http://localhost:8080/win", true);
+                    xhrl.send(null);
                     // change the innerHTML of a div to indicate the prize etc - up to you.
                     var prize = document.getElementById("prize");
                     // faire un hide/show du div... comme on connait déjà le prix...
