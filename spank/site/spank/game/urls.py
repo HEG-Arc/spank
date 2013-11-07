@@ -50,5 +50,6 @@ urlpatterns = patterns('',
     url(r'^chart2$', views.chart2, name='chart2'),
     url(r'^page22$', TemplateView.as_view(template_name='game/22.html'), name='page22'),
     url(r'^coupable/(?P<name>\w+)/$', views.coupable, name='coupable'),
+    url(r'^coupable/$', views.coupable, name='coupable'),
     url(r'^page24$', TemplateView.as_view(template_name='game/24.html'), name='page24'),
 )
