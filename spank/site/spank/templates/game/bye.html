@@ -5,7 +5,7 @@
     <div data-role="page" id="bye">
         <div data-role="content" class="content">
             <div class="qrcode">
-                <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{ player.id }}" />
+                <img src="{% url "create-qr-png" player.id %}" />
                 <p>Code du joueur: {{ player.id }}</p>
             </div>
             <div id="target" class="speech-qrcode">

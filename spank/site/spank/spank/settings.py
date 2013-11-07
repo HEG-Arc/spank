@@ -44,7 +44,7 @@ DATABASES = {
         'USER': 'postgres',                      # Not used with sqlite3.
         'PASSWORD': 'admin',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5433',                      # Set to empty string for default. Not used with sqlite3.
+        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -164,6 +164,7 @@ INSTALLED_APPS = (
     'south',
     #'qrcode',
     'booth',
+    'qrcodegen',
 )
 
 LOGIN_REDIRECT_URL = '/'

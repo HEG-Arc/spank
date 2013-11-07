@@ -7,3 +7,5 @@ django-jqm
 djangotoolbox
 psycopg2
 django-qrcode
+pillow
+qrcode
