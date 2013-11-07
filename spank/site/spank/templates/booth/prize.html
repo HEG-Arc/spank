@@ -18,9 +18,15 @@
                 {
                     startSpin({{ prize.code }});
                     document.getElementById("winwheel").play();
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://localhost:8080/roulette", true);
+                    xhr.send(null);
                 }
                 else if (bumpSeq == "bye")
                 {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://localhost:8080/ambiant", true);
+                    xhr.send(null);
                     window.location.href = {% url "booth-adscreen" %};
                     return false;
                 }
