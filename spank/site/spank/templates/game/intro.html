@@ -5,13 +5,30 @@
 {% block content %}
     <div data-role="page" id="page1">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                <p class="triangle-right">Bienvenue sur l'application mobile de l'Haute Ecole de Gestion ARC. Pour commencer à jouer cliquez sur le bouton ci-dessous.</p>
-            </div>
-            <div class="character">
-                <img src="{%  static "game/img/Spank.gif" %}"/>
-            </div>
-            <a href="page2" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <table>
+                <tbody>
+                <tr>
+                    <td width="20%"><img src="{%  static "game/img/Spank.gif" %}" height="100px"/></td>
+                    <td width="80%"><b>Spank</b><br />
+                        Haute Ecole de Gestion Arc<br />
+                        Portes ouvertes 2013<br />
+                        <a href="{% url 'permissions' %}" data-role="button" data-icon="arrow-r" class="next">Démarrer</a><br />
+                        Cette application est compatible avec votre téléphone<br />
+                        ****</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p><b>Description</b></p>
+                        <p>Pour découvrir les métiers de l’informatique de gestion, nous vous invitons à aider Spank à résoudre sa dernière enquête.</p>
+                        <p>De nombreux prix sont à gagner pour les détectives les plus perspicaces. En aidant Spank à trouver le coupable, vous participez également au tirage au sort d’une tablette Nexus 7 !</p>
+                        <p><b>Durée du jeu:</b> 5-10 minutes</p>
+
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p><img src="{% static "game/img/logo_arc.jpg" %}" width="20%" /></p>
         </div>
     </div>
 {% endblock %}

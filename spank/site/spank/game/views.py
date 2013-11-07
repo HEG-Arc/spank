@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext, loader
 from game.models import Poll, Choice, User, UserForm, Answer, Visit, Friend
 
@@ -8,7 +8,13 @@ def spank(request):
     visit = Visit()
     visit.session_number = request.session.session_key
     visit.save()
-    return redirect('/game/permissions')
+    return redirect('/game/intro')
+
+
+def intro(request):
+    return render_to_response('game/intro.html', {
+        #
+    }, context_instance=RequestContext(request))
 
 
 def page1(request):
