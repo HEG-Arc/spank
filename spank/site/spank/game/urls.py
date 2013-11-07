@@ -49,6 +49,6 @@ urlpatterns = patterns('',
     url(r'^page21$', TemplateView.as_view(template_name='game/21.html'), name='page21'),
     url(r'^chart2$', views.chart2, name='chart2'),
     url(r'^page22$', TemplateView.as_view(template_name='game/22.html'), name='page22'),
-    url(r'^page23$', TemplateView.as_view(template_name='game/23.html'), name='page23'),
+    url(r'^coupable/(?P<name>\w+)/$', views.coupable, name='coupable'),
     url(r'^page24$', TemplateView.as_view(template_name='game/24.html'), name='page24'),
 )

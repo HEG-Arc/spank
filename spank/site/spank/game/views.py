@@ -271,3 +271,33 @@ def bye(request):
         'player': request.session['spank_user'],
     })
     return HttpResponse(template.render(context))
+
+
+def coupable(request, name=None):
+    # TODO: Save the result in the database...
+    chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
+    simone = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=2)
+    richard = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=3)
+    suspects = ('Chiara', 'Simone', 'Richard')
+    scores = (chiara.choice_id, simone.choice_id, richard.choice_id)
+    max_score = max(scores)
+    suspects_indexes = []
+    for i, j in enumerate(scores):
+        if j == max_score:
+            suspects_indexes.append(i)
+    if len(suspects_indexes) > 2:
+        coupable_name = "%s, %s et %s" % (suspects[0], suspects[1], suspects[2])
+    elif len(suspects_indexes) > 1:
+        coupable_name = "%s et %s" % (suspects[suspects_indexes[0]], suspects[suspects_indexes[1]])
+    else:
+        coupable_name = "%s" % (suspects[suspects_indexes[0]])
+    if name:
+        if name == "Chiara":
+            coupable_name = "Chiara"
+        elif name == "Simone":
+            coupable_name = "Simone"
+        elif name == "Richard":
+            coupable_name = "Richard"
+    return render_to_response('game/23.html', {
+        'coupable': coupable_name,
+    }, context_instance=RequestContext(request))
