@@ -27,20 +27,25 @@ class DMXConnection(object):
         self.dmx_frame = list()
         
       #setup channel output list
-        for i in xrange (511):
+        for i in xrange(511):
             self.dmx_frame.append(0)
         
       #open com
-        if comport is not None: port_num = comport-1
-        else:port_num = COM_PORT-1
+        if comport is not None:
+            port_num = comport-1
+        else:
+            port_num = COM_PORT-1
             
         try:
             self.com = serial.Serial(port_num, baudrate=COM_BAUD, timeout=COM_TIMEOUT)
-        except:
-            print "Could not open COM%s, quitting application" % (port_num+1)
-            sys.exit(0)
+        except serial.SerialException:
+            print "Could not open COM%s" % (port_num+1)
+            while self.com.isOpen():
+                time.sleep(0.2)
+            self.com = serial.Serial(port_num, baudrate=COM_BAUD, timeout=COM_TIMEOUT)
+            #sys.exit(0)
             
-        print "Opened %s" % (self.com.portstr)
+        print "Opened %s" % self.com.portstr
 
     def setChannel(self, chan, val, autorender=False):
     #  takes channel and value arguments to set a channel level in the local 
@@ -48,8 +53,10 @@ class DMXConnection(object):
         if (chan > 512) or (chan < 1):
             print "invalid channel"
             return
-        if val > 255: val=255
-        if val < 0: val=0
+        if val > 255:
+            val = 255
+        if val < 0:
+            val = 0
         self.dmx_frame[chan] = val
         if autorender:
             self.render()
@@ -58,10 +65,10 @@ class DMXConnection(object):
     #  clears all channels to zero. blackout.
     #  with optional channel argument, clears only one channel
         if chan==0:
-            for i in xrange (1, 512, 1):
-                self.dmx_frame[i]=0
+            for i in xrange(1, 512, 1):
+                self.dmx_frame[i] = 0
         else:
-            self.dmx_frame[chan]=0
+            self.dmx_frame[chan] = 0
 
     def render(self):
     #  updates the dmx output from the USB DMX Pro with the values from self.dmx_frame

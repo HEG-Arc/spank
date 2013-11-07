@@ -31,7 +31,16 @@ def ambiant_light():
 
 def roulette_light():
     mydmx = pysimpledmx.DMXConnection(4)
-    for i in [255, 180, 120, 50, 16]:
+    mydmx.setChannel(1, 0) # set DMX channel 1 Red
+    mydmx.setChannel(2, 138) # set DMX channel 2 Green
+    mydmx.setChannel(3, 201)   # set DMX channel 3 Blue
+    mydmx.setChannel(4, 0)   # set DMX channel 4 Dimmer
+    mydmx.setChannel(5, 255)   # set DMX channel 5 Strobe
+    mydmx.setChannel(6, 0)   # set DMX channel 5 Strobe
+    mydmx.setChannel(7, 255)   # set DMX channel 5 Strobe
+    mydmx.render()           # render all of the above changes onto the DMX network
+    for i in [180, 120, 50, 16]:
+        time.sleep(2)
         mydmx.setChannel(1, 0) # set DMX channel 1 Red
         mydmx.setChannel(2, 138) # set DMX channel 2 Green
         mydmx.setChannel(3, 201)   # set DMX channel 3 Blue
@@ -40,7 +49,6 @@ def roulette_light():
         mydmx.setChannel(6, 0)   # set DMX channel 5 Strobe
         mydmx.setChannel(7, 255)   # set DMX channel 5 Strobe
         mydmx.render()           # render all of the above changes onto the DMX network
-        time.sleep(2)
 
 
 def win_light():
