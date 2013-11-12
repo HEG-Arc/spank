@@ -169,6 +169,19 @@ INSTALLED_APPS = (
 
 LOGIN_REDIRECT_URL = '/'
 
+########## EMAIL CONFIGURATION
+# See: https://docs.djangoproject.com/en/1.5/topics/email/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'spank@appagoo.com'
+#EMAIL_HOST_PASSWORD = 'xxxx'
+DEFAULT_FROM_EMAIL = 'spank@appagoo.com'
+SERVER_EMAIL = 'spank@appagoo.com'
+########## END EMAIL CONFIGURATION
+
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
