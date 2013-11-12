@@ -1,7 +1,8 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext, loader
-from game.models import Poll, Choice, User, UserForm, Answer, Visit, Friend
+from .models import Poll, Choice, User, UserForm, Answer, Visit, Friend
+import datetime
 
 
 def spank(request):
@@ -273,7 +274,7 @@ def bye(request):
     return HttpResponse(template.render(context))
 
 
-def coupable(request, name=None):
+def culprit(request, name=None):
     chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
     simone = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=2)
     richard = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=3)
@@ -301,6 +302,7 @@ def coupable(request, name=None):
             coupable_name = "Autre"
     user = request.session['spank_user']
     user.coupable = coupable_name
+    user.last_update_at = datetime.datetime.now()
     user.save()
     request.session['spank_user'] = user
     return render_to_response('game/23.html', {

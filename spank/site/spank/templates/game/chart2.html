@@ -12,7 +12,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "coupable" "Chiara" %}"><img src="{%  static "game/img/Chiara.jpg" %}"/></a></td>
+                    <td><a href="{% url "culprit" "Chiara" %}"><img src="{%  static "game/img/Chiara.jpg" %}"/></a></td>
                     {% for i in chiaragreen %}
                         <td style="background-color: red"></td>
                     {% endfor %}
@@ -24,7 +24,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "coupable" "Simone" %}"><img src="{%  static "game/img/Simone.jpg" %}"/></a></td>
+                    <td><a href="{% url "culprit" "Simone" %}"><img src="{%  static "game/img/Simone.jpg" %}"/></a></td>
                     {% for i in simonegreen %}
                         <td style="background-color: red"></td>
                     {% endfor %}
@@ -36,7 +36,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "coupable" "Richard" %}"><img src="{%  static "game/img/Richard.jpg" %}"/></a></td>
+                    <td><a href="{% url "culprit" "Richard" %}"><img src="{%  static "game/img/Richard.jpg" %}"/></a></td>
                     {% for i in richardgreen %}
                         <td style="background-color: red"></td>
                     {% endfor %}
@@ -48,7 +48,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "coupable" "Autre" %}"><img src="{%  static "game/img/phone.jpg" %}"/></a></td>
+                    <td><a href="{% url "culprit" "Autre" %}"><img src="{%  static "game/img/phone.jpg" %}"/></a></td>
                         <td style="background-color: red"></td>
                         <td style="background-color: red"></td>
                         <td style="background-color: red"></td>
@@ -59,7 +59,7 @@
                     <td></td>
                 </tr>
             </table>
-            <a href="{% url "coupable" %}" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="{% url "culprit" %}" data-role="button" data-icon="arrow-r" class="next">Suite</a>
         </div>
     </div>
 {% endblock %}

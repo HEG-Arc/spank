@@ -31,6 +31,8 @@ class User(models.Model):
     email = models.CharField(max_length=100, blank=True, null=True)
     origin = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    last_update_at = models.DateTimeField(blank=True, null=True)
     prize = models.ForeignKey(Prize, blank=True, null=True)
     coupable = models.CharField(max_length=50, blank=True, null=True)
     contact_access = models.CharField(max_length=10, blank=True, null=True)
