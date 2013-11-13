@@ -1,0 +1,8 @@
+Hello détective {{ firstname }} {{ lastname }},
+Vous avez participé à notre jeu lors de la journée des portes ouvertes à la HE-Arc et nous avez aidé à désigner {{ coupable }} comme coupable
+de la transmission des photos de Nabina.
+
+Le jeux que vous avez fait était destiné à mesurer ...
+
+Avec nos meilleures salutations
+Le team Spank

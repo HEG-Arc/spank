@@ -1,0 +1,78 @@
+{% load i18n %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SPANK > The mass mailing trigger</title>
+    <script>
+        function checkAll(bx) {
+          var cbs = document.getElementsByTagName('input');
+          for(var i=0; i < cbs.length; i++) {
+            if(cbs[i].type == 'checkbox') {
+              cbs[i].checked = bx.checked;
+            }
+          }
+        }
+    </script>
+    <style type="text/css">
+        .error {
+            background-color: #FDD;
+        }
+</style>
+</head>
+<body>
+<h1>Mass mailing trigger</h1>
+<p>Select all users who should receive the end-of-game email notification. Each user will only receive one notification!
+   There are no risks of users receiving multiple notifications.</p>
+
+<form method="post" action="{% url 'fup-mailing' %}">
+{% csrf_token %}
+{{ formset.management_form }}
+
+  <table border="1">
+    <thead>
+    <tr>
+      <th>Select</th>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Prize</th>
+      <th>Culprit</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="5"><input type="checkbox" onclick="checkAll(this)" /> Select all players</td>
+        </tr>
+        {% for form in formset %}
+        <tr{% if form.errors or form.non_field_errors %} class="error"{% endif %}>
+          <td>{{ form.action }}
+              {{ form.sid }}</td>
+          <td>{{ form.model_obj.id }}</td>
+          <td>{{ form.model_obj.email }}</td>
+          <td>{{ form.prize }}</td>
+          <td>{{ form.model_obj.coupable }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5"><input type="checkbox" onclick="checkAll(this)" /> Select all players</td>
+        </tr>
+    </tfoot>
+  </table>
+
+  <div>
+    <h3>errors</h3>
+    <div>{{ formset.errors }}</div>
+  </div>
+  <div>
+    <h3>non_form_errors</h3>
+    <div>{{ formset.non_form_errors }}</div>
+  </div>
+
+  <input type="submit" id="submit" value="Submit" />
+</form>
+
+</body>
+</html>

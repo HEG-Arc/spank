@@ -38,6 +38,8 @@ class User(models.Model):
     prize = models.ForeignKey(Prize, blank=True, null=True)
     coupable = models.CharField(max_length=50, blank=True, null=True)
     contact_access = models.CharField(max_length=10, blank=True, null=True)
+    notified = models.BooleanField(default=False)
+
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.number
     def get_absolute_url(self):
