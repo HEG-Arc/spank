@@ -172,7 +172,6 @@ def mailing(request):
             data = {}
             data['sid'] = user.id
             data['model'] = user
-            data['prize'] = user.prize.label
             users_list.append(data)
 
         formset = TriggerMailFormset(initial=users_list)
