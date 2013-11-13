@@ -3,20 +3,21 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div data-role="page" id="page13">
+    <div data-role="page" id="roulette">
         <div data-role="content">
             <div class="roulette">
                 <div align="center">
-                    <img id="spin_button" src="{%  static "game/img/spin_on.png" %}" alt="Spin" onClick="startSpin();" class="clickable"/>
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                            <td width="438" height="582" class="the_wheel" align="center" valign="center" >
-                                <canvas class="the_canvas" id="myDrawingCanvas" width="434" height="434" >
-                                    <p class="noCanvasMsg" align="center">Sorry, your browser doesn't support canvas.<br />Please try another.</p>
-                                </canvas>
-                            </td>
-                        </tr>
-                    </table>
+                    <div id="spin_button" onClick="startSpin();" class="clickable"/>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td width="219" height="291" class="the_wheel" align="center" valign="center" >
+                                    <canvas class="the_canvas" id="myDrawingCanvas" width="217" height="217" >
+                                        <p class="noCanvasMsg" align="center">Sorry, your browser doesn't support canvas.<br />Please try another.</p>
+                                    </canvas>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <br />
                 <script>

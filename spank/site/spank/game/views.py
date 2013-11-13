@@ -124,7 +124,7 @@ def question2(request):
 def page13(request):
     if request.method == 'POST':
         p = request.POST
-        poll = poll = Poll.objects.get(template='question', sequence=2)
+        poll = Poll.objects.get(template='question', sequence=2)
         if "answer" in p:
             answer = Answer(user=request.session['spank_user'], poll=poll,
                             choice=Choice.objects.get(number=p["answer"]))
@@ -274,7 +274,6 @@ def bye(request):
 
 
 def coupable(request, name=None):
-    # TODO: Save the result in the database...
     chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
     simone = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=2)
     richard = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=3)
@@ -298,6 +297,24 @@ def coupable(request, name=None):
             coupable_name = "Simone"
         elif name == "Richard":
             coupable_name = "Richard"
+        elif name == "Autre":
+            coupable_name = "Autre"
+    user = request.session['spank_user']
+    user.coupable = coupable_name
+    user.save()
+    request.session['spank_user'] = user
     return render_to_response('game/23.html', {
         'coupable': coupable_name,
     }, context_instance=RequestContext(request))
+
+
+def page24(request, accept):
+    user = request.session['spank_user']
+    user.contact_access = accept
+    user.save()
+    request.session['spank_user'] = user
+    template = loader.get_template('game/24.html')
+    context = RequestContext(request, {
+        'accept': accept,
+    })
+    return HttpResponse(template.render(context))

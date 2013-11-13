@@ -32,6 +32,8 @@ class User(models.Model):
     origin = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     prize = models.ForeignKey(Prize, blank=True, null=True)
+    coupable = models.CharField(max_length=50, blank=True, null=True)
+    contact_access = models.CharField(max_length=10, blank=True, null=True)
 
     def get_absolute_url(self):
         return "/game/qrcode/%i/" % self.pk

@@ -5,6 +5,8 @@ from game import views
 
 urlpatterns = patterns('',
 
+    url(r'^welcome/$', TemplateView.as_view(template_name='game/welcome.html'), name='welcome'),
+
     # ex: /game/autorisations
     url(r'^permissions/$', TemplateView.as_view(template_name='game/permissions.html'), name='permissions'),
 
@@ -51,5 +53,5 @@ urlpatterns = patterns('',
     url(r'^page22$', TemplateView.as_view(template_name='game/22.html'), name='page22'),
     url(r'^coupable/(?P<name>\w+)/$', views.coupable, name='coupable'),
     url(r'^coupable/$', views.coupable, name='coupable'),
-    url(r'^page24$', TemplateView.as_view(template_name='game/24.html'), name='page24'),
+    url(r'^page24/(?P<accept>\w+)/$', views.page24, name='page24'),
 )

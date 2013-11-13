@@ -28,6 +28,10 @@
 
 .next
 {
+}
+
+.next-suspect
+{
     left:1%;
     bottom:0px;
     position:absolute !important;

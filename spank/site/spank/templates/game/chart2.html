@@ -6,6 +6,7 @@
     <div data-role="page" id="chart">
         <div data-role="content">
             Voilà donc le résultat... intéressant!
+            Tu peux encore changer d'avis! Clique sur la photo du coupable...
             <table class="chart">
                 <tr class="spacing">
                     <td></td>
@@ -46,8 +47,18 @@
                 <tr class="spacing">
                     <td></td>
                 </tr>
+                <tr>
+                    <td><a href="{% url "coupable" "Autre" %}"><img src="{%  static "game/img/phone.jpg" %}"/></a></td>
+                        <td style="background-color: red"></td>
+                        <td style="background-color: red"></td>
+                        <td style="background-color: red"></td>
+                        <td style="background-color: red"></td>
+                        <td style="background-color: green"></td>
+                </tr>
+                <tr class="spacing">
+                    <td></td>
+                </tr>
             </table>
-            Tu peux encore changer d'avis! Clique sur la photo du coupable...
             <a href="{% url "coupable" %}" data-role="button" data-icon="arrow-r" class="next">Suite</a>
         </div>
     </div>

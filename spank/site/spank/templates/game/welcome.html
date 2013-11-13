@@ -1,0 +1,23 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="welcome">
+        <div data-role="header">
+            <img src="{%  static "game/img/logo_he-arc.jpg" %}"/>
+        </div>
+        <div data-role="content" class="content">
+            <h1>
+                Bienvenue!
+            </h1>
+            <p>
+                Merci de prendre part au mini-jeu développé par la filière informatique de gestion de la Haute Ecole de Gestion Arc!
+            </p>
+            <p>
+                Le jeu dure une dizaine de minutes! Un prix instantané est garanti! Une tablette Google Nexus 7 est également à reporter!
+            </p>
+            <a href="/game/permissions" data-role="button" data-icon="arrow-r" class="next">Accès au jeu!</a>
+        </div>
+    </div>
+{% endblock %}
