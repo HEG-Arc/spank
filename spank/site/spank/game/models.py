@@ -8,6 +8,8 @@ from booth.models import Prize
 class Visit(models.Model):
     session_number = models.CharField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return self.session_number
 
 
 class User(models.Model):
@@ -36,7 +38,8 @@ class User(models.Model):
     prize = models.ForeignKey(Prize, blank=True, null=True)
     coupable = models.CharField(max_length=50, blank=True, null=True)
     contact_access = models.CharField(max_length=10, blank=True, null=True)
-
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return self.number
     def get_absolute_url(self):
         return "/game/qrcode/%i/" % self.pk
 
