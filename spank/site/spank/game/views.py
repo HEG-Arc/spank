@@ -274,7 +274,7 @@ def bye(request):
     return HttpResponse(template.render(context))
 
 
-def culprit(request, name=None):
+def coupable(request, name=None):
     chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
     simone = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=2)
     richard = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=3)
