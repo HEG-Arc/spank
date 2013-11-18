@@ -45,6 +45,9 @@ urlpatterns = patterns('',
     url(r'^bye/$', views.bye, name='bye'),
     url(r'^qrcode/$', TemplateView.as_view(template_name='game/qrcode.html'), name='qrcode'),
 
+    url(r'^gipc/$', TemplateView.as_view(template_name='game/gipc.html'), name='gipc'),
+    url(r'^gipcq/(?P<sequence>\d+)/$', views.gipc_question, name='gipc_question'),
+
     url(r'^page17$', TemplateView.as_view(template_name='game/17.html'), name='page17'),
     url(r'^page19$', TemplateView.as_view(template_name='game/19.html'), name='page19'),
     url(r'^page20$', TemplateView.as_view(template_name='game/20.html'), name='page20'),

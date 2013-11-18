@@ -204,6 +204,7 @@ def privacy1(request):
     })
     return HttpResponse(template.render(context))
 
+
 def privacy2(request):
     poll = Poll.objects.filter(template='privacy2').order_by('sequence')[0]
     if request.method == 'POST':
@@ -297,3 +298,22 @@ def page24(request, accept):
         'accept': accept,
     })
     return HttpResponse(template.render(context))
+
+
+def gipc_question(request, sequence):
+    sequence = int(sequence)
+    poll = Poll.objects.get(template='gipc', sequence=sequence)
+    if request.method == 'POST':
+        p = request.POST
+        save_poll = Poll.objects.get(sequence=p['sequence'], template='gipc')
+        if "answer" in p:
+            answer = Answer(user=request.session['spank_user'], poll=save_poll,
+                            choice=Choice.objects.get(number=p["answer"]))
+            answer.save()
+
+    if sequence < 4:
+        return render_to_response('game/gipc-q.html', {
+            'poll': poll,
+        }, context_instance=RequestContext(request))
+    else:
+        return redirect('/game/page8')
