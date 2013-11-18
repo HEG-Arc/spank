@@ -1,0 +1,21 @@
+{% extends 'game/iOSAndjQueryMobileBase.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block content %}
+    <div data-role="page" id="gipcq/{{ poll.sequence }}">
+        <div data-role="content">
+            <p class="triangle-right">{{ poll.question }}</p>
+            <div class="character-lickert">
+                <img src="{%  static "game/img/Spank.gif" %}"/>
+            </div>
+            <div class="lickert">
+                <form action="{% url 'gipc_question' poll.next.sequence %}" method="post">{% csrf_token %}
+                    <input type="range" name="answer" id="slider-step" value="1" min="1" max="5" step="1" />
+                    <input type="hidden" name="sequence" value={{ poll.sequence }} />
+                    <input id="questions" type="submit" value="Suite" data-icon="arrow-r"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
