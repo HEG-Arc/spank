@@ -64,7 +64,7 @@ prizes[3] = {"name" : "un linge de bain", "startAngle" : 135, "endAngle" : 179};
 prizes[4] = {"name" : "un parapluie", "startAngle" : 180, "endAngle" : 224};
 prizes[5] = {"name" : "un jeux de cartes", "startAngle" : 225, "endAngle" : 269};
 prizes[6] = {"name" : "des bonbons", "startAngle" : 270, "endAngle" : 314};
-prizes[7] = {"name" : "un style", "startAngle" : 315, "endAngle" : 360};
+prizes[7] = {"name" : "un stylo", "startAngle" : 315, "endAngle" : 360};
 
 // Idea: an idea I had for this, but not implimented, is that if you wanted some the prizes / segments in your wheel to be "winners" and some to be "loosers"
 // you could add a property to the items in the prize array stating if win/loose and then in the doSpin function code that is executed when the spinning has
