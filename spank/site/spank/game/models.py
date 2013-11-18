@@ -89,6 +89,7 @@ class Answer(models.Model):
     poll = models.ForeignKey(Poll)
     choice = models.ForeignKey(Choice)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class AnswerForm(forms.ModelForm):

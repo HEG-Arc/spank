@@ -72,14 +72,6 @@ def thanks(request):
 
 def question1(request):
     poll = Poll.objects.get(template='question', sequence=1)
-    if request.method == 'POST':
-        p = request.POST
-        poll = Poll.objects.get(sequence=p['sequence'], template='question')
-        if "answer" in p:
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.get(number=p["answer"]))
-            answer.save()
-
     template = loader.get_template('game/question1.html')
     context = RequestContext(request, {
         'poll': poll,
@@ -88,33 +80,25 @@ def question1(request):
 
 
 def page12(request):
+    poll = Poll.objects.get(template='question', sequence=1)
     if request.method == 'POST':
         p = request.POST
-        poll = Poll.objects.get(template='question', sequence=1)
         if "answer" in p:
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.get(number=p["answer"]))
+            try:
+                answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+                answer.choice = Choice.objects.get(number=p['answer'])
+            except Answer.DoesNotExist:
+                answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.get(number=p['answer']))
             answer.save()
-
-        template = loader.get_template('game/12.html')
-        context = RequestContext(request, {
-            'poll': poll,
-        })
-        return HttpResponse(template.render(context))
-    else:
-        raise Http404
+    template = loader.get_template('game/12.html')
+    context = RequestContext(request, {
+        'poll': poll,
+    })
+    return HttpResponse(template.render(context))
 
 
 def question2(request):
     poll = Poll.objects.get(template='question', sequence=2)
-    if request.method == 'POST':
-        p = request.POST
-        poll = Poll.objects.get(sequence=p['sequence'], template='question')
-        if "answer" in p:
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.get(number=p["answer"]))
-            answer.save()
-
     template = loader.get_template('game/question2.html')
     context = RequestContext(request, {
         'poll': poll,
@@ -123,32 +107,25 @@ def question2(request):
 
 
 def page13(request):
+    poll = Poll.objects.get(template='question', sequence=2)
     if request.method == 'POST':
         p = request.POST
-        poll = Poll.objects.get(template='question', sequence=2)
         if "answer" in p:
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.get(number=p["answer"]))
+            try:
+                answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+                answer.choice = Choice.objects.get(number=p['answer'])
+            except Answer.DoesNotExist:
+                answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.get(number=p['answer']))
             answer.save()
-        template = loader.get_template('game/13.html')
-        context = RequestContext(request, {
-            'poll': poll,
-        })
-        return HttpResponse(template.render(context))
-    else:
-        raise Http404
+    template = loader.get_template('game/13.html')
+    context = RequestContext(request, {
+        'poll': poll,
+    })
+    return HttpResponse(template.render(context))
 
 
 def question3(request):
     poll = Poll.objects.get(template='question', sequence=3)
-    if request.method == 'POST':
-        p = request.POST
-        poll = Poll.objects.get(sequence=p['sequence'], template='question')
-        if "answer" in p:
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.get(number=p["answer"]))
-            answer.save()
-
     template = loader.get_template('game/question3.html')
     context = RequestContext(request, {
         'poll': poll,
@@ -160,19 +137,19 @@ def page14(request):
     poll = Poll.objects.get(template='question', sequence=3)
     if request.method == 'POST':
         p = request.POST
-        poll = Poll.objects.get(sequence=p['sequence'], template='question')
         if "answer" in p:
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.get(number=p["answer"]))
+            try:
+                answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+                answer.choice = Choice.objects.get(number=p['answer'])
+            except Answer.DoesNotExist:
+                answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.get(number=p['answer']))
             answer.save()
+    template = loader.get_template('game/14.html')
+    context = RequestContext(request, {
+        'poll': poll,
+    })
+    return HttpResponse(template.render(context))
 
-        template = loader.get_template('game/14.html')
-        context = RequestContext(request, {
-            'poll': poll,
-        })
-        return HttpResponse(template.render(context))
-    else:
-        raise Http404
 
 def chart(request):
     chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
