@@ -23,15 +23,6 @@ path.append(DJANGO_ROOT)
 ########## END PATH CONFIGURATION
 
 ADMINS = (
-
-
-
-
-
-
-
-
-
     # ('Your Name', 'your_email@example.com'),
 )
 
