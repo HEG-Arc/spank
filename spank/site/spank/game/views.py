@@ -72,9 +72,15 @@ def thanks(request):
 
 def question1(request):
     poll = Poll.objects.get(template='question', sequence=1)
+    try:
+        answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+        choice = answer.choice.number
+    except Answer.DoesNotExist:
+        choice = 1
     template = loader.get_template('game/question1.html')
     context = RequestContext(request, {
         'poll': poll,
+        'choice': choice,
     })
     return HttpResponse(template.render(context))
 
@@ -99,9 +105,15 @@ def page12(request):
 
 def question2(request):
     poll = Poll.objects.get(template='question', sequence=2)
+    try:
+        answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+        choice = answer.choice.number
+    except Answer.DoesNotExist:
+        choice = 1
     template = loader.get_template('game/question2.html')
     context = RequestContext(request, {
         'poll': poll,
+        'choice': choice,
     })
     return HttpResponse(template.render(context))
 
@@ -126,9 +138,15 @@ def page13(request):
 
 def question3(request):
     poll = Poll.objects.get(template='question', sequence=3)
+    try:
+        answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+        choice = answer.choice.number
+    except Answer.DoesNotExist:
+        choice = 1
     template = loader.get_template('game/question3.html')
     context = RequestContext(request, {
         'poll': poll,
+        'choice': choice,
     })
     return HttpResponse(template.render(context))
 
@@ -185,12 +203,20 @@ def chart2(request):
 
 def privacy1(request):
     poll = Poll.objects.filter(template='privacy1').order_by('sequence')[0]
+    try:
+        answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+        choice = answer.choice.number
+    except Answer.DoesNotExist:
+        choice = 1
     if request.method == 'POST':
         p = request.POST
         poll = Poll.objects.filter(sequence=p['sequence'], template='privacy1')[0]
         if p.has_key("answer"):
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.filter(number=p["answer"])[0])
+            try:
+                answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+                answer.choice = Choice.objects.get(number=p['answer'])
+            except Answer.DoesNotExist:
+                answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.get(number=p['answer']))
             answer.save()
         if p.has_key("next"):
             sequence = p['next']
@@ -201,18 +227,27 @@ def privacy1(request):
     template = loader.get_template('game/question.html')
     context = RequestContext(request, {
         'poll': poll,
+        'choice': choice,
     })
     return HttpResponse(template.render(context))
 
 
 def privacy2(request):
     poll = Poll.objects.filter(template='privacy2').order_by('sequence')[0]
+    try:
+        answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+        choice = answer.choice.number
+    except Answer.DoesNotExist:
+        choice = 1
     if request.method == 'POST':
         p = request.POST
         poll = Poll.objects.filter(sequence=p['sequence'], template='privacy2')[0]
         if p.has_key("answer"):
-            answer = Answer(user=request.session['spank_user'], poll=poll,
-                            choice=Choice.objects.filter(number=p["answer"])[0])
+            try:
+                answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+                answer.choice = Choice.objects.get(number=p['answer'])
+            except Answer.DoesNotExist:
+                answer = Answer(user=request.session['spank_user'], poll=poll, choice=Choice.objects.get(number=p['answer']))
             answer.save()
         if p.has_key("next"):
             sequence = p['next']
@@ -223,6 +258,7 @@ def privacy2(request):
     template = loader.get_template('game/question.html')
     context = RequestContext(request, {
         'poll': poll,
+        'choice': choice,
     })
     return HttpResponse(template.render(context))
 
@@ -303,17 +339,26 @@ def page24(request, accept):
 def gipc_question(request, sequence):
     sequence = int(sequence)
     poll = Poll.objects.get(template='gipc', sequence=sequence)
+    try:
+        answer = Answer.objects.get(user=request.session['spank_user'], poll=poll)
+        choice = answer.choice.number
+    except Answer.DoesNotExist:
+        choice = 1
     if request.method == 'POST':
         p = request.POST
         save_poll = Poll.objects.get(sequence=p['sequence'], template='gipc')
         if "answer" in p:
-            answer = Answer(user=request.session['spank_user'], poll=save_poll,
-                            choice=Choice.objects.get(number=p["answer"]))
+            try:
+                answer = Answer.objects.get(user=request.session['spank_user'], poll=save_poll)
+                answer.choice = Choice.objects.get(number=p['answer'])
+            except Answer.DoesNotExist:
+                answer = Answer(user=request.session['spank_user'], poll=save_poll, choice=Choice.objects.get(number=p['answer']))
             answer.save()
 
     if sequence < 4:
         return render_to_response('game/gipc-q.html', {
             'poll': poll,
+            'choice': choice,
         }, context_instance=RequestContext(request))
     else:
         return redirect('/game/page8')
