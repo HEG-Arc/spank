@@ -7,11 +7,8 @@ import datetime
 
 def permissions(request):
     if request.method == 'POST':
-        visit = Visit()
         # Initialization of the session in order to have a session_key
         request.session['start'] = request.POST['start']
-        visit.session_number = request.session.session_key
-        visit.save()
     template = loader.get_template('game/permissions.html')
     context = RequestContext(request, {
     })
@@ -31,11 +28,9 @@ def page1(request):
     else:
         request.session['permissions'] = "accepted"
 
-    if Visit.objects.filter(session_number=request.session.session_key).count() > 1 :
-        visit = Visit.objects.filter(session_number=request.session.session_key)[Visit.objects.filter(session_number=request.session.session_key).count()-1]
-    else:
-        visit = Visit.objects.get(session_number=request.session.session_key)
+    visit = Visit()
     visit.auth_accepted = request.session['permissions']
+    visit.session_number = request.session.session_key
     visit.save()
 
     template = loader.get_template('game/1.html')
