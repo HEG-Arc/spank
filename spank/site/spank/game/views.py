@@ -31,7 +31,10 @@ def page1(request):
     else:
         request.session['permissions'] = "accepted"
 
-    visit = Visit.objects.filter(session_number=request.session.session_key)[Visit.objects.filter(session_number=request.session.session_key).count()-1]
+    if Visit.objects.filter(session_number=request.session.session_key).count() > 1 :
+        visit = Visit.objects.filter(session_number=request.session.session_key)[Visit.objects.filter(session_number=request.session.session_key).count()-1]
+    else:
+        visit = Visit.objects.get(session_number=request.session.session_key)
     visit.auth_accepted = request.session['permissions']
     visit.save()
 
