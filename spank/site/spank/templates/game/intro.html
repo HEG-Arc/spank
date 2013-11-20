@@ -12,7 +12,10 @@
                     <td width="80%"><b>Spank</b><br />
                         Haute Ecole de Gestion Arc<br />
                         Portes ouvertes 2013<br />
-                        <a href="{% url 'permissions' %}" data-role="button" data-icon="arrow-r" class="next">Démarrer</a><br />
+                        <form action="{% url 'permissions' %}" method="post">{% csrf_token %}
+                            <input type="hidden" name="start" value="start"/>
+                            <input type="submit" value="Démarrer" data-icon="arrow-r"/>
+                        </form>
                         Cette application est compatible avec votre téléphone<br />
                         ****</td>
                 </tr>
@@ -20,7 +23,7 @@
                     <td colspan="2">
                         <p><b>Description</b></p>
                         <p>Pour découvrir les métiers de l’informatique de gestion, nous vous invitons à aider Spank à résoudre sa dernière enquête.</p>
-                        <p>De nombreux prix sont à gagner pour les détectives les plus perspicaces. En aidant Spank à trouver le coupable, vous participez également au tirage au sort d’une tablette Nexus 7 !</p>
+                        <p>De nombreux prix sont à gagner pour les détectives les plus perspicaces. En aidant Spank à trouver le coupable, vous participez également au tirage au sort d’une tablette Google Nexus 7 !</p>
                         <p><b>Durée du jeu:</b> 5-10 minutes</p>
 
 

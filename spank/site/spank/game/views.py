@@ -5,11 +5,17 @@ from .models import Poll, Choice, User, UserForm, Answer, Visit, Friend
 import datetime
 
 
-def spank(request):
-    visit = Visit()
-    visit.session_number = request.session.session_key
-    visit.save()
-    return redirect('/game/intro')
+def permissions(request):
+    if request.method == 'POST':
+        visit = Visit()
+        # Initialization of the session in order to have a session_key
+        request.session['start'] = request.POST['start']
+        visit.session_number = request.session.session_key
+        visit.save()
+    template = loader.get_template('game/permissions.html')
+    context = RequestContext(request, {
+    })
+    return HttpResponse(template.render(context))
 
 
 def intro(request):
@@ -25,8 +31,7 @@ def page1(request):
     else:
         request.session['permissions'] = "accepted"
 
-    visit = Visit()
-    visit.session_number = request.session.session_key
+    visit = Visit.objects.filter(session_number=request.session.session_key)[Visit.objects.filter(session_number=request.session.session_key).count()-1]
     visit.auth_accepted = request.session['permissions']
     visit.save()
 

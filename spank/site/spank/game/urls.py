@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     url(r'^welcome/$', TemplateView.as_view(template_name='game/welcome.html'), name='welcome'),
 
     # ex: /game/autorisations
-    url(r'^permissions/$', TemplateView.as_view(template_name='game/permissions.html'), name='permissions'),
+    url(r'^permissions/$', views.permissions, name='permissions'),
 
     url(r'^refused/$', TemplateView.as_view(template_name='game/refused.html'), name='refused'),
 

@@ -1,12 +1,13 @@
 from django.conf.urls import patterns, url, include
 from game import views
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    url(r'^spank/', views.spank, name='spank'),
+    url(r'^spank/', TemplateView.as_view(template_name='game/intro.html'), name='intro'),
     url(r'^game/', include('game.urls')),
     url(r'^booth/', include('booth.urls')),
     url(r'^qr/', include('qrcodegen.urls')),
