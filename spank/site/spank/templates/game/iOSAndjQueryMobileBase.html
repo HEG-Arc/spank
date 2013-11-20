@@ -3,13 +3,13 @@
 {% load url from future %}
 {% block title %}Détective Spank{% endblock %}
 {% block head %}
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+    <link rel="stylesheet" href="{% static 'game/css/jquery.mobile-1.3.1.min.css' %}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link href="{% static "game/css/main.css"%}" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'game/css/main.css' %}" rel="stylesheet" type="text/css" media="screen" />
 {% endblock %}
 {% block post_main_script %}
-    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script src="{% static 'game/js/jquery.mobile-1.3.1.min.js' %}"></script>
     <script src="{% static 'game/js/main.js' %}"></script>
     <script type='text/javascript' src="{% static 'game/js/winwheel_1.2.js' %}"></script>
 {% endblock %}
