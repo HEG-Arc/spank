@@ -19,7 +19,10 @@
                     <li>Vos informations personnelles</li>
                 </ul>
                 <div class="next-permissions">
-                    <a href="../page1" data-role="button">Accepter et continuer</a>
+                    <form action="/game/page1" method="post">{% csrf_token %}
+                        <input type="hidden" name="permissions" value="accepted"/>
+                        <input type="submit" value="Accepter" />
+                    </form>
                     <a href="../refused" data-role="button">Refuser</a>
                 </div>
             </div>

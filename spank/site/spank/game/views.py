@@ -25,13 +25,10 @@ def page1(request):
 
     if request.method == 'POST':
         request.session['permissions'] = request.POST['permissions']
-    else:
-        request.session['permissions'] = "accepted"
-
-    visit = Visit()
-    visit.auth_accepted = request.session['permissions']
-    visit.session_number = request.session.session_key
-    visit.save()
+        visit = Visit()
+        visit.auth_accepted = request.session['permissions']
+        visit.session_number = request.session.session_key
+        visit.save()
 
     template = loader.get_template('game/1.html')
     context = RequestContext(request, {
