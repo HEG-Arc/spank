@@ -19,10 +19,16 @@ def intro(request):
 
 
 def page1(request):
+
     if request.method == 'POST':
         request.session['permissions'] = request.POST['permissions']
     else:
         request.session['permissions'] = "accepted"
+
+    visit = Visit()
+    visit.session_number = request.session.session_key
+    visit.auth_accepted = request.session['permissions']
+    visit.save()
 
     template = loader.get_template('game/1.html')
     context = RequestContext(request, {

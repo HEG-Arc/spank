@@ -7,9 +7,8 @@ from booth.models import Prize
 
 class Visit(models.Model):
     session_number = models.CharField(max_length=500, blank=True, null=True)
+    auth_accepted = models.CharField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    def __unicode__(self):  # Python 3: def __str__(self):
-        return self.session_number
 
 
 class User(models.Model):
