@@ -1,28 +1,42 @@
 {% extends "booth/master-booth.html" %}
+{% load staticfiles %}
 
 {% block content %}
 
 <script type='text/javascript' src='{{ STATIC_URL }}booth/js/jquery.min.js'></script>
 <script type='text/javascript' src='{{ STATIC_URL }}booth/js/jquery.cycle2.min.js'></script>
-
+<audio id="metroid" src="{% static "booth/audio/metroid.ogg" %}" preload="auto" autoplay="autoplay" loop="loop"></audio>
 <style type="text/css">
-  div#qrscan {
+    input[type="text"] {
+        background-color: #000000;
+        border-color: #000000;
+        width: 0px;
+    }
+    div#qrscan {
       position: absolute;
+      left: -5px;
       z-index: 1;
-  }
-  div#slideshow {
+    }
+    div#slideshow {
       position: absolute;
       z-index: 2;
-  }
+    }
     div#messages {
       position: absolute;
       z-index: 3;
-  }
+    }
 </style>
-
+<script type="text/javascript">
+    function setVolume()
+    {
+        mySound=document.getElementById("metroid");
+        mySound.volume=0.2;
+    }
+    window.onload=setVolume;
+</script>
 <div id="qrscan">
 <form action="{% url 'booth-scanqr' %}" method="POST">
-<input type="text" name="scanqr" autofocus="autofocus" />
+<input id="scanqr" type="text" name="scanqr" autofocus="autofocus" autocomplete="off" />
 {% csrf_token %}
 </form>
 </div>

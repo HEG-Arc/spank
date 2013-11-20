@@ -75,6 +75,9 @@
                 font-family: OCRABold;
                 margin: 0 50px 0 50px;
             }
+            body {
+                background-color: #000000;
+            }
         </style>
 	</head>
 	<body onKeyPress="if (event.keyCode == 13) bumperPress(bumpSeq)">
@@ -93,7 +96,7 @@
             </script>
         </div>
         <div id="debug">
-            {{ prize.code }} | {{ prize.label }}
+
         </div>
         <div id="prize">
             <p>Vous repartez avec<br />{{ prize.label }}!</p>

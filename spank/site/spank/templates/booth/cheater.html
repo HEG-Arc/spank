@@ -11,10 +11,40 @@ function bumperPress()
 }
 </script>
 
-<h1>HEG Arc - Informatique de gestion</h1>
+<style>
+    @font-face {
+        font-family: OCRA;
+        src: url({% static 'booth/img/OCRA.ttf' %});
+    }
+    @font-face {
+        font-family: OCRABold;
+        src: url({% static 'booth/img/OCRABold.ttf' %});
+    }
+    @font-face {
+        font-family: OCRACondensed;
+        src: url({% static 'booth/img/OCRACondensed.ttf' %});
+    }
+    @font-face {
+        font-family: OCRAItalic;
+        src: url({% static 'booth/img/OCRAItalic.ttf' %});
+    }
+    #cheater {
+        font-family: OCRABold;
+        position: absolute;
+        top: 350px;
+        left: 474px;
+        width: 575px;
+        font-size: 35px;
+        color: whitesmoke;
+    }
+</style>
 
-<p>Vous avez déjà gagné un magnifique <b>{{ player.prize.label }}</b></p>
+<div id="background">
+    <img src="{% static 'booth/img/cheater.png' %}" />
+</div>
 
-<center><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></center>
+<div id="cheater">
+    <p>{{ player.prize.label }}!</p>
+</div>
+
 {% endblock content %}
-</body>
