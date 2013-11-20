@@ -1,37 +1,65 @@
-{% extends 'game/iOSAndjQueryMobileBase.html' %}
-{% load url from future %}
 {% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="{% static 'booth/css/main.css' %}" type="text/css" />
+    <style>
+        @font-face {
+            font-family: "Roboto";
+            src: url("{% static 'game/fonts/robo.woff' %}")  format('woff');
+        }
 
-{% block content %}
-    <div data-role="page" id="page1">
-        <div data-role="content" class="content">
-            <table>
-                <tbody>
-                <tr>
-                    <td width="20%"><img src="{%  static "game/img/Spank.gif" %}" height="100px"/></td>
-                    <td width="80%"><b>Spank</b><br />
-                        Haute Ecole de Gestion Arc<br />
-                        Portes ouvertes 2013<br />
-                        <form action="{% url 'permissions' %}" method="post">{% csrf_token %}
-                            <input type="hidden" name="start" value="start"/>
-                            <input type="submit" value="Démarrer" data-icon="arrow-r"/>
-                        </form>
-                        Cette application est compatible avec votre téléphone<br />
-                        ****</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <p><b>Description</b></p>
-                        <p>Pour découvrir les métiers de l’informatique de gestion, nous vous invitons à aider Spank à résoudre sa dernière enquête.</p>
-                        <p>De nombreux prix sont à gagner pour les détectives les plus perspicaces. En aidant Spank à trouver le coupable, vous participez également au tirage au sort d’une tablette Google Nexus 7 !</p>
-                        <p><b>Durée du jeu:</b> 5-10 minutes</p>
+        body {
+            background-image: url('{% static 'game/img/app_header_bg.png' %}');
+            background-repeat: repeat-x;
+            background-color: #F5F5F5;
+            font-family: "Roboto",Arial,sans-serif;
+            font-weight: 100;
+            font-size: 14px;
+        }
+        #app {
+            float: left;
+            height: 200px;
+        }
+        #app img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        .clear {
+            clear: both;
+        }
+        #description {
+            float: left;
+        }
+        .title {
+            color: #333333;
+            font-size: 28px;
+            font-weight: 100;
+            margin: 0 0 10px;
+        }
+        .text p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <a href="{% url 'permissions' %}"><img src="{% static 'game/img/app_header.png' %}" /></a>wdqw
+    wdqwdqw
+</div>
+<div class="clear">
 
-
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <p><img src="{% static "game/img/logo_arc.jpg" %}" width="20%" /></p>
-        </div>
+</div>
+<div id="description">
+    <div class="title">Description</div>
+    <div class="text">
+    <p>Pour découvrir les métiers de l’informatique de gestion, nous vous invitons à aider Spank à résoudre sa dernière enquête.</p>
+    <p>De nombreux prix sont à gagner pour les détectives les plus perspicaces. En aidant Spank à trouver le coupable, vous participez également au tirage au sort d’une tablette Google Nexus 7 !</p>
+    <p><b>Durée du jeu:</b> 5-10 minutes</p>
     </div>
-{% endblock %}
+</div>
+
+</body>
+</html>
