@@ -92,12 +92,9 @@ def summary(request, user_id):
     richard = Answer.objects.get(user_id=player.id, poll_id=3)
     return render_to_response('booth/summary.html', {
         'player': player,
-        'chiaragreen': range(int(chiara.choice_id)),
-        'chiara': range(int(5-chiara.choice_id)),
-        'simonegreen': range(int(simone.choice_id)),
-        'simone': range(int(5-simone.choice_id)),
-        'richardgreen': range(int(richard.choice_id)),
-        'richard': range(int(5-richard.choice_id)),
+        'chiarared': int(chiara.choice_id*55.6),
+        'simonered': int(simone.choice_id*55.6),
+        'richardred': int(richard.choice_id*55.6),
     }, context_instance=RequestContext(request))
 
 

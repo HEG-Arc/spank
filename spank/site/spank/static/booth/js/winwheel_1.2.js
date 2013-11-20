@@ -57,14 +57,14 @@ var determinedGetUrl = "";  	 // Set to URL of the server-side process to load v
 // In order to work correctly the the start and end angles need to match the begining and end of the segments for the prizes in your wheel image.
 // Thinking about a clock face, 0 is at the 12 o'clock, 90 is at the 3 o'clock, 180 is 6 o'clock, 270 is 9 o'clock.
 var prizes = new Array();
-prizes[0] = {"name" : "un stylo", "startAngle" : 0,   "endAngle" : 44};  // Note how prize end angle is 1 less than start angle of next prize so no overlap.
-prizes[1] = {"name" : "une carte USB", "startAngle" : 45,  "endAngle" : 89};
-prizes[2] = {"name" : "un parapluie", "startAngle" : 90,  "endAngle" : 134};
-prizes[3] = {"name" : "une boîte de bonbons", "startAngle" : 135, "endAngle" : 179};
-prizes[4] = {"name" : "un stylo", "startAngle" : 180, "endAngle" : 224};
-prizes[5] = {"name" : "une sarte USB", "startAngle" : 225, "endAngle" : 269};
-prizes[6] = {"name" : "un parapluie", "startAngle" : 270, "endAngle" : 314};
-prizes[7] = {"name" : "une boîte de bonbons", "startAngle" : 315, "endAngle" : 360};
+prizes[0] = {"name" : "un bloc-note", "startAngle" : 0,   "endAngle" : 44};  // Note how prize end angle is 1 less than start angle of next prize so no overlap.
+prizes[1] = {"name" : "un porte-clefs", "startAngle" : 45,  "endAngle" : 89};
+prizes[2] = {"name" : "une carte USB", "startAngle" : 90,  "endAngle" : 134};
+prizes[3] = {"name" : "un linge de bain", "startAngle" : 135, "endAngle" : 179};
+prizes[4] = {"name" : "un parapluie", "startAngle" : 180, "endAngle" : 224};
+prizes[5] = {"name" : "un jeux de cartes", "startAngle" : 225, "endAngle" : 269};
+prizes[6] = {"name" : "des bonbons", "startAngle" : 270, "endAngle" : 314};
+prizes[7] = {"name" : "un stylo", "startAngle" : 315, "endAngle" : 360};
 
 // Idea: an idea I had for this, but not implimented, is that if you wanted some the prizes / segments in your wheel to be "winners" and some to be "loosers"
 // you could add a property to the items in the prize array stating if win/loose and then in the doSpin function code that is executed when the spinning has
@@ -361,9 +361,7 @@ function doSpin()
                     xhrl.open("GET", "http://localhost:8080/win", true);
                     xhrl.send(null);
                     // change the innerHTML of a div to indicate the prize etc - up to you.
-                    var prize = document.getElementById("prize");
-                    // faire un hide/show du div... comme on connait déjà le prix...
-                    prize.innerHTML = "<h2>Vous avez gagné " + prizes[x]['name'] + "!</h2>";
+                    document.getElementById("prize").style.display="inline";
                     bumpSeq = "bye";
 					break;
 				}

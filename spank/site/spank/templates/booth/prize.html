@@ -33,34 +33,70 @@
             }
         </script>
         <script type='text/javascript' src='{{ STATIC_URL }}booth/js/winwheel_1.2.js'></script>
+        <style>
+            @font-face {
+                font-family: OCRA;
+                src: url({% static 'booth/img/OCRA.ttf' %});
+            }
+            @font-face {
+                font-family: OCRABold;
+                src: url({% static 'booth/img/OCRABold.ttf' %});
+            }
+            @font-face {
+                font-family: OCRACondensed;
+                src: url({% static 'booth/img/OCRACondensed.ttf' %});
+            }
+            @font-face {
+                font-family: OCRAItalic;
+                src: url({% static 'booth/img/OCRAItalic.ttf' %});
+            }
+            #wheel {
+              position: absolute;
+              top: 71px;
+              left: 333px;
+            }
+            #debug {
+              position: absolute;
+              top: 701px;
+              left: 1120px;
+            }
+            #prize {
+              display: none;
+              position: absolute;
+              top: 490px;
+              left: 200px;
+              width: 880px;
+              height: 150px;
+              background-image:url({% static 'booth/img/winner_background.png' %});
+            }
+            p {
+                font-size: 50px;
+                color: whitesmoke;
+                font-family: OCRABold;
+                margin: 0 50px 0 50px;
+            }
+        </style>
 	</head>
 	<body onKeyPress="if (event.keyCode == 13) bumperPress(bumpSeq)">
         <audio id="winwheel" src="{% static "booth/audio/winwheel.ogg" %}" preload="auto"></audio>
         <audio id="winsound" src="{% static "booth/audio/win.ogg" %}" preload="auto"></audio>
-		<div align="center">
-			<table cellpadding="0" cellspacing="0" border="0">
-				<tr>
-					<td width="438" height="582" class="the_wheel" align="center" valign="center">
-						<canvas class="the_canvas" id="myDrawingCanvas" width="434" height="434">
-							<p class="noCanvasMsg" align="center">Sorry, your browser doesn't support canvas.<br />Please try another.</p>
-						</canvas>
-					</td>
-				</tr>
-                <tr>
-                    <td>
-                        DEBUG<br />
-                        Player: {{ player.id }}<br />
-                        Prize: {{ prize.code }} / {{ prize.label }}
-                    </td>
-                </tr>
-			</table>
+		<div id="background">
+            <img src="{% static 'booth/img/wheel-background.gif' %}" />
+        </div>
+        <div id="wheel">
+            <canvas class="the_canvas" id="myDrawingCanvas" width="595" height="595">
+                <p class="noCanvasMsg" align="center"></p>
+            </canvas>
             <script>
                 // Call function to draw the wheel face at it's initial position.
                 begin();
             </script>
         </div>
-        <div id="prize" align="center">
-            <p>Pressez sur le bumper pour lancer la roue...</p>
+        <div id="debug">
+            {{ prize.code }} | {{ prize.label }}
+        </div>
+        <div id="prize">
+            <p>Vous repartez avec<br />{{ prize.label }}!</p>
         </div>
 	</body>
 </html>

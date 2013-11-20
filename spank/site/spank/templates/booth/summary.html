@@ -11,42 +11,120 @@ function bumperPress()
 }
 </script>
 
-<h1>HEG Arc - Informatique de gestion</h1>
+<style>
+    @font-face {
+        font-family: OCRA;
+        src: url({% static 'booth/img/OCRA.ttf' %});
+    }
+    @font-face {
+        font-family: OCRABold;
+        src: url({% static 'booth/img/OCRABold.ttf' %});
+    }
+    @font-face {
+        font-family: OCRACondensed;
+        src: url({% static 'booth/img/OCRACondensed.ttf' %});
+    }
+    @font-face {
+        font-family: OCRAItalic;
+        src: url({% static 'booth/img/OCRAItalic.ttf' %});
+    }
+    #badge {
+        font-family: OCRA;
+        position: absolute;
+        top: 105px;
+        left: 80px;
+        width: 375px;
+    }
+    .information {
+        padding-top: 50px;
+    }
+    #chiara {
+        position: absolute;
+        top: 134px;
+        left: 875px;
+    }
+    #chiarared {
+        background-color: #CC3333;
+        width: {{ chiarared }}px;
+        height: 57px;
+        float: left;
+    }
+    #simone {
+        position: absolute;
+        top: 231px;
+        left: 875px;
+    }
+    #simonered {
+        background-color: #CC3333;
+        width: {{ simonered }}px;
+        height: 57px;
+        float: left;
+    }
+    #richard {
+        position: absolute;
+        top: 328px;
+        left: 875px;
+    }
+    #richardred {
+        background-color: #CC3333;
+        width: {{ richardred }}px;
+        height: 57px;
+        float: left;
+    }
+    #smartphone {
+        position: absolute;
+        top: 425px;
+        left: 875px;
+    }
+    #smartphonered {
+        background-color: #CC3333;
+        width: 168px;
+        height: 57px;
+        float: left;
+    }
+    .resultbarend {
+        float: left;
+    }
+</style>
 
-<p>Best academic program in town!</p>
-
-
-            <div class="detective-badge">
-                <div class="title">
-                    <h2>{{ player.lastname|upper }}, {{ player.firstname }}</h2>
-                </div>
-                <div class="basic-information">
-                    <span class="id-photo">
-                        <img src="{%  static "game/img/badge.png" %}" />
-                    </span>
-                    <span class="address">
-                        {{ player.address }}</br>
-                        {{ player.postcode }} {{ player.locality }}</br>
-                        {{ player.country }}
-                    </span>
-                </div>
-                <div class="information">
-                    <b>Sexe :</b> {{ player.gender }}</br>
-                    <b>Taille :</b> {{ player.height }}</br>
-                    <b>Poids :</b> {{ player.weight }}</br>
-                    <b>Signe(s) distinctif(s) :</b> {{ player.distinctive_signs }}</br>
-                    <b>Formation :</b> {{ player.education }}</br>
-                    <b>Email :</b> {{ player.email }}</br>
-                    <b>Origine :</b> {{ player.origin }}
-                </div>
-            </div>
-
-    <table class="chart">
-                <tr class="spacing">
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><img src="{%  static "game/img/Chiara.jpg" %}"/></td>
+<div id="background">
+    <img src="{% static 'booth/img/results_background.png' %}" />
+</div>
+<div id="badge">
+        <div>
+            <h2>{{ player.lastname|upper }}, {{ player.firstname }}</h2>
+        </div>
+        <div class="basic-information">
+            <span class="address">
+                {% if player.address %}{{ player.address }}</br>{% endif %}
+                {% if player.postcode %}{{ player.postcode }} {% endif %}{% if player.locality %}{{ player.locality }}{% endif %}{% if player.postcode or player.locality %}</br>{% endif %}
+                {% if player.country %}{{ player.country }}{% endif %}
+            </span>
+        </div>
+        <div class="information">
+            {% if player.gender %}<b>Sexe:</b> {{ player.gender }}</br>{% endif %}
+            {% if player.height %}<b>Taille:</b> {{ player.height }} cm</br>{% endif %}
+            {% if player.weight %}<b>Poids:</b> {{ player.weight }} kg</br>{% endif %}
+            {% if player.distinctive_signs %}<b>Signe(s) distinctif(s):</b> {{ player.distinctive_signs }}</br>{% endif %}
+            {% if player.education %}<b>Formation:</b> {{ player.education }}</br>{% endif %}
+            {% if player.email %}<b>Email:</b> {{ player.email }}</br>{% endif %}
+            {% if player.origin %}<b>Origine:</b> {{ player.origin }}{% endif %}
+        </div>
+</div>
+<div id="results">
+    <div id="chiara">
+        <div id="chiarared">&nbsp;</div><div class="resultbarend"><img src="{% static 'booth/img/resultbar_end.png' %}"></div>
+    </div>
+    <div id="simone">
+        <div id="simonered">&nbsp;</div><div class="resultbarend"><img src="{% static 'booth/img/resultbar_end.png' %}"></div>
+    </div>
+    <div id="richard">
+        <div id="richardred">&nbsp;</div><div class="resultbarend"><img src="{% static 'booth/img/resultbar_end.png' %}"></div>
+    </div>
+    <div id="smartphone">
+        <div id="smartphonered">&nbsp;</div><div class="resultbarend"><img src="{% static 'booth/img/resultbar_end.png' %}"></div>
+    </div>
+</div>
                     {% for i in chiaragreen %}
                         <td style="background-color: red"></td>
                     {% endfor %}
@@ -58,7 +136,7 @@ function bumperPress()
                     <td></td>
                 </tr>
                 <tr>
-                    <td><img src="{%  static "game/img/Simone.jpg" %}"/></td>
+                    <td></td>
                     {% for i in simonegreen %}
                         <td style="background-color: red"></td>
                     {% endfor %}
@@ -70,7 +148,7 @@ function bumperPress()
                     <td></td>
                 </tr>
                 <tr>
-                    <td><img src="{%  static "game/img/Richard.jpg" %}"/></td>
+                    <td></td>
                     {% for i in richardgreen %}
                         <td style="background-color: red"></td>
                     {% endfor %}
@@ -82,10 +160,6 @@ function bumperPress()
                     <td></td>
                 </tr>
             </table>
-
-
-<h2>Pressez sur le bumper pour valider votre enquête</h2>
-
-<center><img src="{% static "booth/img/bumper.jpg" %}" width="200px" /></center>
+</div>
 
 {% endblock content %}
