@@ -5,8 +5,11 @@
 {% block content %}
     <div data-role="page" id="chart">
         <div data-role="content">
-            OK, voilà où en est notre enquête...
-            <table class="chart">
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    OK, voilà où en est notre enquête...
+                    <table class="chart">
                 <tr class="spacing">
                     <td></td>
                 </tr>
@@ -47,7 +50,12 @@
                     <td></td>
                 </tr>
             </table>
-            <a href="/game/page15" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+                </div>
+                <div class="bu-bo"></div>
+            </div>
+
+
+            <a href="/game/page15" data-role="button" data-icon="arrow-r" class="next" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

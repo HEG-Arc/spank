@@ -5,16 +5,20 @@
 {% block content %}
     <div data-role="page" id="page8">
         <div data-role="content" class="content">
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Nabina, la nouvelle star locale, m’a contactée à propos d’une histoire de photos volées... tu sais ce que c’est... ce n’est pas très agréable de se retrouver en petite tenue sur le web...
+                </div>
+                <div class="bu-bo"></div>
+            </div>
             <div class="suspect">
                 <img src="{%  static "game/img/Nabina.jpg" %}"/>
-            </div>
-            <div id="target" class="speech-mini">
-                <p class="triangle-right right">Nabina, la nouvelle star locale, m’a contactée à propos d’une histoire de photos volées…  tu sais ce que c’est… ce n’est pas très agréable de se retrouver en petite tenue sur le web…</p>
             </div>
             <div class="character-mini">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="/game/page9" data-role="button" data-icon="arrow-r" class="next-suspect">Suite</a>
+            <a href="/game/page9" data-role="button" data-icon="arrow-r" class="next-suspect" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

@@ -5,13 +5,17 @@
 {% block content %}
     <div data-role="page" id="page21">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                <p class="triangle-right">Ca ne s’arrange pas cette enquête… Je n’ai pas réussi à disculper les suspects et j’ai un coupable de plus ! Si l’on en croit 19 minutes, on ne va plus pouvoir utiliser de smartphone… Je ne suis pas convaincue ! Et toi, qu’est-ce que tu en penses ?</p>
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Ca ne s’arrange pas cette enquête... Je n’ai pas réussi à disculper les suspects et j’ai un coupable de plus! Si l’on en croit 19 minutes, on ne va plus pouvoir utiliser de smartphone... Je ne suis pas convaincue! Et toi, qu’est-ce que tu en penses?
+                </div>
+                <div class="bu-bo"></div>
             </div>
             <div class="character">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="/game/privacy2" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="/game/privacy2" data-role="button" data-icon="arrow-r" class="next" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

@@ -5,8 +5,14 @@
 {% block content %}
     <div data-role="page" id="question_{{ poll.sequence }}">
         <div data-role="content">
-            <p class="triangle-right">{{ poll.question }}</p>
-            <div class="character-lickert">
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    {{ poll.question }}
+                </div>
+                <div class="bu-bo"></div>
+            </div>
+            <div class="character">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
             <div class="lickert">
@@ -16,7 +22,7 @@
                     {% if poll.next %}
                         <input type="hidden" name="next" value={{ poll.next.sequence }} />
                     {% endif %}
-                    <input id="questions" type="submit" value="Suite" data-icon="arrow-r"/>
+                    <input id="questions" type="submit" value="Suite" data-icon="arrow-r" data-theme="e"/>
                 </form>
             </div>
         </div>

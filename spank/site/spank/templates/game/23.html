@@ -5,17 +5,21 @@
 {% block content %}
     <div data-role="page" id="page22">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                {% if coupable == "Autre" %}
-                    <p class="triangle-right">Merci ! Je vais de ce pas chez Martin afin d'approfondir cette piste...</p>
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    {% if coupable == "Autre" %}
+                    Merci ! Je vais de ce pas chez Martin afin d'approfondir cette piste...
                 {% else %}
-                    <p class="triangle-right">Merci ! Je vais de ce pas chez {{ coupable }} afin de l’interroger pour essayer de découvrir son mobile…</p>
+                    Merci ! Je vais de ce pas chez {{ coupable }} afin de l’interroger pour essayer de découvrir son mobile...
                 {% endif %}
+                </div>
+                <div class="bu-bo"></div>
             </div>
             <div class="character">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="/game/access" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="/game/access" data-role="button" data-icon="arrow-r" class="next" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

@@ -5,13 +5,17 @@
 {% block content %}
     <div data-role="page" id="page1">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                <p class="triangle-right">Bonjour, mon nom est Spank, détective Spank. Actuellement, je suis préoccupée par une enquête que je n’arrive pas à faire avancer. Je compte sur ton aide pour me donner un coup de main !</p>
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Bonjour, mon nom est Spank, détective Spank. Actuellement, je suis préoccupée par une enquête que je n’arrive pas à faire avancer. Je compte sur ton aide pour me donner un coup de main !
+                </div>
+                <div class="bu-bo"></div>
             </div>
-            <div class="character">
+            <div class="character character-left">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="page2" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="page2" data-role="button" data-icon="arrow-r" class="next" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

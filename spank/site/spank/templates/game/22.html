@@ -5,13 +5,17 @@
 {% block content %}
     <div data-role="page" id="page22">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                <p class="triangle-right">Sur ce coup, on a fait une bonne équipe ! On va découvrir ensemble le résultat de cette enquête…</p>
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Sur ce coup, on a fait une bonne équipe ! On va découvrir ensemble le résultat de cette enquête...
+                </div>
+                <div class="bu-bo"></div>
             </div>
             <div class="character">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="/game/chart2" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="/game/chart2" data-role="button" data-icon="arrow-r" class="next" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

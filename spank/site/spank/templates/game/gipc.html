@@ -5,15 +5,19 @@
 {% block content %}
     <div data-role="page" id="gipc">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                <p class="triangle-right">Très bien! Avant de passer en revue les différents suspects, j'aimerais avoir ton avis
-                sur le respect de la sphère privée. C'est un sujet d'actualité et Nabina semble bien y avoir été
-                confrontée...</p>
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Très bien! Avant de passer en revue les différents suspects, j'aimerais avoir ton avis
+                    sur le respect de la sphère privée. C'est un sujet d'actualité et Nabina semble bien y avoir été
+                    confrontée...
+                </div>
+                <div class="bu-bo"></div>
             </div>
-            <div class="character">
+            <div class="character character-left">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="{% url 'gipc_question' 1 %}" data-role="button" data-icon="arrow-r" class="next-suspect">Suite</a>
+            <a href="{% url 'gipc_question' 1 %}" data-role="button" data-icon="arrow-r" class="next-suspect" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

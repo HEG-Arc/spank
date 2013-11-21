@@ -5,13 +5,17 @@
 {% block content %}
     <div data-role="page" id="page18">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                <p class="triangle-right">Waow ! Là je sens que l’on avance dans l’enquête… On doit considérer un nouveau suspect : le téléphone de Nabina !</p>
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Waow ! Là je sens que l’on avance dans l’enquête... On doit considérer un nouveau suspect: le téléphone de Nabina !
+                </div>
+                <div class="bu-bo"></div>
             </div>
             <div class="character">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="/game/page19" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="/game/page19" data-role="button" data-icon="arrow-r" class="next" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

@@ -5,16 +5,20 @@
 {% block content %}
     <div data-role="page" id="page12">
         <div data-role="content" class="content">
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Simone est totalement accro aux réseaux sociaux. Elle passe son temps à prendre des photos d’elle et de Nabina. Le téléphone de Nabina en est rempli et certaines pourraient choquer un public non averti!?! Durant mon enquête, j’ai retrouvé la trace de quelques photos que Simone a partagées sur les réseaux sociaux, mais rien de bien grave pour le moment...
+                </div>
+                <div class="bu-bo"></div>
+            </div>
             <div class="suspect">
                 <img src="{%  static "game/img/Simone.jpg" %}"/>
-            </div>
-            <div id="target" class="speech-mini">
-                <p class="triangle-right right">Simone est totalement accro aux réseaux sociaux. Elle passe son temps à prendre des photos d’elle et de Nabina. Le téléphone de Nabina en est rempli et certaines pourraient choquer un public non averti !?! Durant mon enquête, j’ai retrouvé la trace de quelques photos que Simone a partagées sur les réseaux sociaux, mais rien de bien grave pour le moment…</p>
             </div>
             <div class="character-mini">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="question2" data-role="button" data-icon="arrow-r" class="next-suspect">Suite</a>
+            <a href="question2" data-role="button" data-icon="arrow-r" class="next-suspect" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

@@ -5,13 +5,17 @@
 {% block content %}
     <div data-role="page" id="page15">
         <div data-role="content" class="content">
-            <div id="target" class="speech">
-                <p class="triangle-right">Merci Martin ! Je pense qu’il faut un peu relativiser… Nabina n’est pas Angela Merkel, elle n’intéresse pas les autres puissances à ce point ;-) Et toi, qu’est-ce que tu en penses… ?</p>
+            <div class="bulle">
+                <div class="bu-to"></div>
+                <div class="bu-tx">
+                    Merci Martin ! Je pense qu’il faut un peu relativiser... Nabina n’est pas Angela Merkel, elle n’intéresse pas les autres puissances à ce point ;-) Et toi, qu’est-ce que tu en penses..?
+                </div>
+                <div class="bu-bo"></div>
             </div>
             <div class="character">
                 <img src="{%  static "game/img/Spank.gif" %}"/>
             </div>
-            <a href="/game/privacy1" data-role="button" data-icon="arrow-r" class="next">Suite</a>
+            <a href="/game/privacy1" data-role="button" data-icon="arrow-r" class="next" data-theme="e">Suite</a>
         </div>
     </div>
 {% endblock %}

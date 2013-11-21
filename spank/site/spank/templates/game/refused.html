@@ -13,24 +13,24 @@
                 <form action="/game/page1" method="post">{% csrf_token %}
                      <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup" data-type="vertical">
-                            <input id="refused" name="permissions" value="refused" data-theme="c" type="radio">
+                            <input id="refused" name="permissions" value="refused" data-theme="e" type="radio">
                             <label for="refused">
                                 Oui, refuser l'accès à mes données et au tirage au sort final
                             </label>
-                            <input id="accepted" name="permissions" value="accepted after" data-theme="c" type="radio">
+                            <input id="accepted" name="permissions" value="accepted after" data-theme="e" type="radio">
                             <label for="accepted">
                                 Non, accepter et participer au tirage au sort final
                             </label>
                         </fieldset>
                     </div>
                     <div class="next-permissions">
-                       <input type="submit" value="Suite" data-icon="arrow-r"/>
+                       <input type="submit" value="Suite" data-icon="arrow-r" data-theme="e"/>
                     </div>
                 </form>
             </div>
         </div>
         <div data-role="footer">
-            <h4>Copyright HE-ARC 2013</h4>
+            <h4>(c) HE-ARC Gestion 2013</h4>
         </div>
     </div>
 {% endblock %}
