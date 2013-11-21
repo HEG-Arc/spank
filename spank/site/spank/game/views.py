@@ -294,39 +294,41 @@ def bye(request):
     return HttpResponse(template.render(context))
 
 
-def coupable(request, name=None):
-    chiara = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=1)
-    simone = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=2)
-    richard = Answer.objects.get(user_id=request.session['spank_user'].id, poll_id=3)
-    suspects = ('Chiara', 'Simone', 'Richard')
-    scores = (chiara.choice_id, simone.choice_id, richard.choice_id)
-    max_score = max(scores)
-    suspects_indexes = []
-    for i, j in enumerate(scores):
-        if j == max_score:
-            suspects_indexes.append(i)
-    if len(suspects_indexes) > 2:
-        coupable_name = "%s, %s et %s" % (suspects[0], suspects[1], suspects[2])
-    elif len(suspects_indexes) > 1:
-        coupable_name = "%s et %s" % (suspects[suspects_indexes[0]], suspects[suspects_indexes[1]])
-    else:
-        coupable_name = "%s" % (suspects[suspects_indexes[0]])
+def culprit(request, name=None):
     if name:
         if name == "Chiara":
-            coupable_name = "Chiara"
+            culprit_name = "Chiara"
         elif name == "Simone":
-            coupable_name = "Simone"
+            culprit_name = "Simone"
         elif name == "Richard":
-            coupable_name = "Richard"
+            culprit_name = "Richard"
         elif name == "Autre":
-            coupable_name = "Autre"
+            culprit_name = "Autre"
     user = request.session['spank_user']
-    user.coupable = coupable_name
+    user.coupable = culprit_name
     user.last_update_at = datetime.datetime.now()
     user.save()
     request.session['spank_user'] = user
+
+    nb_chiara = User.objects.filter(coupable='Chiara').count()
+    nb_simone = User.objects.filter(coupable='Simone').count()
+    nb_richard = User.objects.filter(coupable='Richard').count()
+    nb_autre = User.objects.filter(coupable='Autre').count()
+    nb_total = nb_chiara + nb_simone + nb_richard + nb_autre
+
+    prct_chiara = 100*nb_chiara/nb_total
+    prct_simone = 100*nb_simone/nb_total
+    prct_richard = 100*nb_richard/nb_total
+    prct_autre = 100*nb_autre/nb_total
+
+
     return render_to_response('game/23.html', {
-        'coupable': coupable_name,
+        'culprit': culprit_name,
+        'nb_chiara': prct_chiara,
+        'nb_simone': prct_simone,
+        'nb_richard': prct_richard,
+        'nb_autre': prct_autre,
+
     }, context_instance=RequestContext(request))
 
 
