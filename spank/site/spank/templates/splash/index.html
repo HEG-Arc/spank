@@ -1,14 +1,45 @@
-{% extends 'game/iOSAndjQueryMobileBase.html' %}
 {% load staticfiles %}
 {% load url from future %}
 
-{% block content %}
-<div data-role="page" id="index">
-  <div data-role="content" class="content">
-    <h1>HE-Arc Gestion | Appagoo</h1>
-    <h2>Appagoo est un projet de recherche de la HE-Arc Gestion dans le domaine de l’assistance à la protection de la vie privée.</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <style>
+        @font-face {
+            font-family: "Roboto";
+            src: url("{% static 'game/fonts/robo.woff' %}")  format('woff');
+        }
+
+        body {
+            background-color: #F5F5F5;
+            font-family: "Roboto",Arial,sans-serif;
+            font-weight: 100;
+            font-size: 14px;
+        }
+        #app img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        .title {
+            color: #333333;
+            font-size: 28px;
+            font-weight: 100;
+            margin: 0 0 10px;
+        }
+        .text p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">HE-Arc Gestion | Appagoo</div>
     <div><a href="{% url 'intro' %}"><img src="{% static 'splash/img/play.png' %}" alt="JOUER !" /></a></div>
-    <p>Le projet vise à développer un outil d’aide à la décision permettant d’évaluer le danger potentiel des applications mobiles par rapport à sa propre perception de la protection de la vie privée. Nous n’avons malheureusement pas encore de résultats à présenter, mais vous pouvez déjà tester vos connaissances en aidant notre détective Spank à résoudre sa nouvelle enquête.</p>
-  </div>
-</div>
-{% endblock %}
+    <div class="text">
+    <p>Nous n’avons malheureusement pas encore de résultats à présenter, mais vous pouvez déjà tester vos connaissances en aidant notre détective Spank à résoudre sa nouvelle enquête.</p>
+    </div>
+
+</body>
+</html>

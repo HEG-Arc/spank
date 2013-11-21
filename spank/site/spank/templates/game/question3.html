@@ -3,6 +3,14 @@
 {% load staticfiles %}
 
 {% block content %}
+    <style>
+        .ui-page.ui-body-c {
+            background: url('/static/game/img/bg2.jpg');
+            background-repeat:no-repeat;
+            background-position:center center;
+            background-size:cover;
+        }
+    </style>
     <div data-role="page" id="question_{{ poll.sequence }}">
         <div data-role="content">
             <div class="bulle">
@@ -17,7 +25,7 @@
             </div>
             <div class="lickert">
                 <form action="/game/page14" method="post">{% csrf_token %}
-                    <input type="range" name="answer" id="slider-step" value="{{ choice }}" min="1" max="5" step="1" />
+                    <input type="range" name="answer" id="slider-step" value="{{ choice }}" min="1" max="5" step="1" data-theme="e" />
                     <input type="hidden" name="sequence" value={{ poll.sequence }} />
                     <input id="questions" type="submit" value="Suite" data-icon="arrow-r" data-theme="e"/>
                 </form>

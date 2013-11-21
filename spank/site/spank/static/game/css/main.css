@@ -65,12 +65,12 @@
 
 .character-left
 {
-
+    text-align: left;
 }
 
 .character-right
 {
-
+    text-align: right;
 }
 
 .speech-mini
@@ -123,6 +123,7 @@
     width: 80vw;
     height: auto;
     max-width:400px;
+    padding-bottom: 20px;
 }
 
 .process
@@ -468,22 +469,22 @@ p.noCanvasMsg
     margin-bottom: 10px;
 }
 .bu-c-tx {
-    background: #CD0006;
+    background: #cc3333;
     padding-left: 20px;
     padding-right: 20px;
     color: #000000;
 }
 .bu-c-to {
-    border-bottom: 22px solid #CD0006;
+    border-bottom: 22px solid #cc3333;
     border-left: 22px solid transparent;
 }
 .bu-c-bo {
-    border-top: 22px solid #CD0006;
+    border-top: 22px solid #cc3333;
     border-right: 22px solid transparent;
     margin-bottom: 10px;
 }
 .bu-c-suspect {
-    background: #CD0006;
+    background: #cc3333;
 }
 .news-tx {
     background: #ccffcc;
