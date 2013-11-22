@@ -3,16 +3,17 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div data-role="page" id="page22">
+    <div data-role="page" id="page23">
         <div data-role="content" class="content">
             <div class="bulle">
                 <div class="bu-to"></div>
                 <div class="bu-tx">
-                    {% if coupable == "Autre" %}
+                {% if culprit == "Autre" %}
                     Merci ! Je vais de ce pas chez Martin afin d'approfondir cette piste...
                 {% else %}
-                    Merci ! Je vais de ce pas chez {{ coupable }} afin de l’interroger pour essayer de découvrir son mobile...
+                    Merci ! Je vais de ce pas chez {{ culprit }} afin de l’interroger pour essayer de découvrir son mobile...
                 {% endif %}
+                    Jusqu'à présent, environ {{ nb_chiara }}% des participants pensent que le coupable est Chiara, {{ nb_simone }}% Simone, {{ nb_richard }}% Richard et {{ nb_autre }}% pensent que ça peut être le smartphone... Intéressant! n'est-ce pas?!
                 </div>
                 <div class="bu-bo"></div>
             </div>
