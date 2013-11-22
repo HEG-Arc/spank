@@ -20,7 +20,6 @@
 .lickert
 {
     left:1%;
-    bottom:0px;
     position:absolute !important;
     top: auto !important;
     width:98%;
@@ -33,7 +32,6 @@
 .next-suspect
 {
     left:1%;
-    bottom:0px;
     position:absolute !important;
     top: auto !important;
     width:98%;
@@ -521,7 +519,7 @@ p.noCanvasMsg
 
 .ui-page.ui-body-c {
     background: url('/static/game/img/bg1.jpg');
-    background-repeat:no-repeat;
-    background-position:center center;
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
