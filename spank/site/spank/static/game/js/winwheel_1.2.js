@@ -361,7 +361,7 @@ function doSpin()
 				{
 					// Do something with the knowlege. For this example the user is just alerted, but you could play a sound,
 					// change the innerHTML of a div to indicate the prize etc - up to you.
-                    $("#congrats").append("<p>Félicitations! vous pouvez mulitiplier vos chances par " + prizes[x]['name'] + "</p>")
+                    $("#congrats").append("<p>Bravo! Tu vas pouvoir multiplier tes chances de gagner la tablette par " + prizes[x]['name'] + "</p>")
                     $("#chances").prop("href", "/game/multiply/" + prizes[x]['name'])
                     $("#chances").show();
 					break;

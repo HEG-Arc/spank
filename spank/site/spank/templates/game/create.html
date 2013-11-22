@@ -8,7 +8,7 @@
             <form action="/game/thanks/" method="post">{% csrf_token %}
                 {{ form.non_field_errors }}
                 <div class="detective-badge">
-                    <div class="title">
+                    <div class="title-create">
                         <div class="fieldWrapper">
                             {{ form.lastname.errors }}
                             <label for="id_lastname"></label>
@@ -20,11 +20,7 @@
                             {{ form.firstname }}
                         </div>
                     </div>
-                    <div class="basic-information">
-                        <span class="id-photo">
-                            <img src="{%  static "game/img/badge.png" %}" />
-                        </span>
-                        <span class="address">
+                    <div class="information">
                             <div class="fieldWrapper">
                                 {{ form.address.errors }}
                                 <label for="id_address"></label>
@@ -45,9 +41,6 @@
                                 <label for="id_country"></label>
                                 {{ form.country }}
                             </div>
-                        </span>
-                    </div>
-                    <div class="information">
                         <div class="fieldWrapper">
                             {{ form.gender.errors }}
                             <label for="id_gender"></label>

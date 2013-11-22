@@ -150,19 +150,37 @@
 {
     overflow : auto;
     font-family: courier;
-    color: #cccccc;
+    color: #000000;
     border: #333333 solid;
-    border-radius: 15px;
-    background-color: #333333;
+    background-color: #ff6633;
     left:1%;
     width:98%;
 }
 
 .title
 {
-    background-color: #FFBE1E;
-    color: #333333;
-    padding:10px;
+    background-color: #ff6633;
+    color: #000000;
+    padding-top: 3vh;
+    padding-left: 15px;
+    background-image: url('/static/game/img/badge_top.gif');
+    background-size: auto 5vh;
+    background-repeat: repeat-x;
+    border-bottom: 3px dotted #000000 ;
+}
+
+.title-create
+{
+    background-color: #ff6633;
+    color: #000000;
+    padding-top: 5vh;
+    background-image: url('/static/game/img/badge_top.gif');
+    background-size: auto 5vh;
+    background-repeat: repeat-x;
+    border-bottom: 3px dotted #000000;
+    margin-top : 10px;
+    margin-left : 1%;
+    width:98%;
 }
 
 .basic-information span{

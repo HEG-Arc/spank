@@ -16,14 +16,14 @@
                     <div class="invitations">
                        {% for i in factor %}
                            <label for="email_{{ i }}">Email ami n°{{ i|add:"1" }}</label>
-                           <input type="hidden" name="factor" value="{{ factor_id }}">
+                           <input type="hidden" name="factor" value="{{ factor_id }}" data-theme="e">
                            <input type="text" name="email_{{ i }}"><br>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="bu-bo"></div>
             </div>
-                    <input type="submit" value="Suite" data-icon="arrow-r"/>
+                    <input type="submit" value="Suite" data-icon="arrow-r" data-theme="e" />
                 </form>
             </div>
 

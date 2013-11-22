@@ -7,19 +7,12 @@
         <div data-role="content">
             <div class="detective-badge">
                 <div class="title">
-                    <h2>{{ new_user.lastname|upper }}, {{ new_user.firstname }}</h2>
-                </div>
-                <div class="basic-information">
-                    <span class="id-photo">
-                        <img src="{%  static "game/img/badge.png" %}"/>
-                    </span>
-                    <span class="address">
-                        {{ new_user.address }}</br>
-                        {{ new_user.postcode }} {{ new_user.locality }}</br>
-                        {{ new_user.country }}
-                    </span>
+                    <h2>{{ new_user.lastname|upper }} {{ new_user.firstname }}</h2>
                 </div>
                 <div class="information">
+                    {{ new_user.address }}</br>
+                    {{ new_user.postcode }} {{ new_user.locality }}</br>
+                    {{ new_user.country }}</br></br>
                     <b>Sexe :</b> {{ new_user.gender }}</br>
                     <b>Taille :</b> {{ new_user.height }}</br>
                     <b>Poids :</b> {{ new_user.weight }}</br>

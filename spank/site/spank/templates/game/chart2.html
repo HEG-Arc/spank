@@ -10,61 +10,66 @@
                 <div class="bu-tx">
                     Voilà donc le résultat... intéressant!<br>
                     Tu peux encore changer d'avis! Clique sur la photo du coupable...
-
+                </div>
+                <div class="bu-bo"></div>
+            </div>
+            <div class="bulle">
+                <div class="bu-c-to"></div>
+                <div class="bu-c-tx">
             <table class="chart">
                 <tr class="spacing">
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "culprit" "Chiara" %}"><img src="{%  static "game/img/Chiara.jpg" %}"/></a></td>
+                    <td><a href="{% url "culprit" "Chiara" %}"><img src="{%  static "game/img/chiara.png" %}"/></a></td>
                     {% for i in chiaragreen %}
-                        <td style="background-color: red"></td>
+                        <td style="background-color: #ff6633"></td>
                     {% endfor %}
                     {% for i in chiara %}
-                        <td style="background-color: green"></td>
+                        <td style="background-color: #336633"></td>
                     {% endfor %}
                 </tr>
                 <tr class="spacing">
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "culprit" "Simone" %}"><img src="{%  static "game/img/Simone.jpg" %}"/></a></td>
+                    <td><a href="{% url "culprit" "Simone" %}"><img src="{%  static "game/img/simone.png" %}"/></a></td>
                     {% for i in simonegreen %}
-                        <td style="background-color: red"></td>
+                        <td style="background-color: #ff6633"></td>
                     {% endfor %}
                     {% for i in simone %}
-                        <td style="background-color: green"></td>
+                        <td style="background-color: #336633"></td>
                     {% endfor %}
                 </tr>
                 <tr class="spacing">
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "culprit" "Richard" %}"><img src="{%  static "game/img/Richard.jpg" %}"/></a></td>
+                    <td><a href="{% url "culprit" "Richard" %}"><img src="{%  static "game/img/richard.png" %}"/></a></td>
                     {% for i in richardgreen %}
-                        <td style="background-color: red"></td>
+                        <td style="background-color: #ff6633"></td>
                     {% endfor %}
                     {% for i in richard %}
-                        <td style="background-color: green"></td>
+                        <td style="background-color: #336633"></td>
                     {% endfor %}
                 </tr>
                 <tr class="spacing">
                     <td></td>
                 </tr>
                 <tr>
-                    <td><a href="{% url "culprit" "Autre" %}"><img src="{%  static "game/img/phone.JPG" %}"/></a></td>
-                        <td style="background-color: red"></td>
-                        <td style="background-color: red"></td>
-                        <td style="background-color: red"></td>
-                        <td style="background-color: red"></td>
-                        <td style="background-color: green"></td>
+                    <td><a href="{% url "culprit" "Autre" %}"><img src="{%  static "game/img/phone.png" %}"/></a></td>
+                        <td style="background-color: #ff6633"></td>
+                        <td style="background-color: #ff6633"></td>
+                        <td style="background-color: #ff6633"></td>
+                        <td style="background-color: #ff6633"></td>
+                        <td style="background-color: #336633"></td>
                 </tr>
                 <tr class="spacing">
                     <td></td>
                 </tr>
             </table>
             </div>
-                <div class="bu-bo"></div>
+                <div class="bu-c-bo"></div>
             </div>
         </div>
     </div>

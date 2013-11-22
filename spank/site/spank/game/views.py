@@ -1,4 +1,4 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext, loader
 from .models import Poll, Choice, User, UserForm, Answer, Visit, Friend
@@ -21,7 +21,7 @@ def intro(request):
     }, context_instance=RequestContext(request))
 
 
-def page1(request):
+def pageperm(request):
 
     if request.method == 'POST':
         request.session['permissions'] = request.POST['permissions']
@@ -29,11 +29,8 @@ def page1(request):
         visit.auth_accepted = request.session['permissions']
         visit.session_number = request.session.session_key
         visit.save()
-
-    template = loader.get_template('game/1.html')
-    context = RequestContext(request, {
-    })
-    return HttpResponse(template.render(context))
+        return HttpResponseRedirect('page1')
+    return HttpResponseRedirect('permissions')
 
 
 def create(request):
