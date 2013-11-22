@@ -26,6 +26,13 @@ def ambiant_light():
     mydmx.setChannel(5, 0)   # set DMX channel 5 Strobe (16-255)
     mydmx.setChannel(6, 0)   # set DMX channel 6 Mode 0
     mydmx.setChannel(7, 150)   # set DMX channel 7 Dim (0-255)
+    mydmx.setChannel(8, 0) # set DMX channel 1 Red (0-255)
+    mydmx.setChannel(9, 138) # set DMX channel 2 Green (0-255)
+    mydmx.setChannel(10, 201)   # set DMX channel 3 Blue (0-255)
+    mydmx.setChannel(11, 0)   # set DMX channel 4 Macro 0
+    mydmx.setChannel(12, 0)   # set DMX channel 5 Strobe (16-255)
+    mydmx.setChannel(13, 0)   # set DMX channel 6 Mode 0
+    mydmx.setChannel(14, 100)   # set DMX channel 7 Dim (0-255)
     mydmx.render()           # render all of the above changes onto the DMX network
     #mydmx.setChannel(4, 255, autorender=True) # set channel 4 to full and render to the network
 
@@ -38,6 +45,13 @@ def roulette_light():
     mydmx.setChannel(5, 255)   # set DMX channel 5 Strobe
     mydmx.setChannel(6, 0)   # set DMX channel 5 Strobe
     mydmx.setChannel(7, 255)   # set DMX channel 5 Strobe
+    mydmx.setChannel(8, 230) # set DMX channel 1 Red (0-255)
+    mydmx.setChannel(9, 0) # set DMX channel 2 Green (0-255)
+    mydmx.setChannel(10, 98)   # set DMX channel 3 Blue (0-255)
+    mydmx.setChannel(11, 0)   # set DMX channel 4 Macro 0
+    mydmx.setChannel(12, 0)   # set DMX channel 5 Strobe (16-255)
+    mydmx.setChannel(13, 0)   # set DMX channel 6 Mode 0
+    mydmx.setChannel(14, 150)   # set DMX channel 7 Dim (0-255)
     mydmx.render()           # render all of the above changes onto the DMX network
     for i in [180, 120, 50, 16]:
         time.sleep(2)
@@ -97,11 +111,19 @@ def win_light():
     mydmx.setChannel(5, 0)   # set DMX channel 5 Strobe
     mydmx.setChannel(6, 0)   # set DMX channel 5 Strobe
     mydmx.setChannel(7, 150)   # set DMX channel 5 Strobe
+    mydmx.setChannel(8, 0) # set DMX channel 1 Red (0-255)
+    mydmx.setChannel(9, 138) # set DMX channel 2 Green (0-255)
+    mydmx.setChannel(10, 201)   # set DMX channel 3 Blue (0-255)
+    mydmx.setChannel(11, 0)   # set DMX channel 4 Macro 0
+    mydmx.setChannel(12, 0)   # set DMX channel 5 Strobe (16-255)
+    mydmx.setChannel(13, 0)   # set DMX channel 6 Mode 0
+    mydmx.setChannel(14, 100)   # set DMX channel 7 Dim (0-255)
     mydmx.render()           # render all of the above changes onto the DMX network
 
 def no_light():
     mydmx = pysimpledmx.DMXConnection(4)
     mydmx.setChannel(7, 0)   # set DMX channel 4 Dimmer
+    mydmx.setChannel(14, 0)   # set DMX channel 4 Dimmer
     mydmx.render()           # render all of the above changes onto the DMX network
     #mydmx.setChannel(4, 255, autorender=True) # set channel 4 to full and render to the network
 
