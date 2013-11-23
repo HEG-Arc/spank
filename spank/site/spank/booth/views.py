@@ -72,6 +72,8 @@ def scanqr(request):
             except ValueError:
                 messages.error(request, _(u"Le QR-Code scanné n'est pas dans un format reconnu!"))
                 return HttpResponseRedirect(reverse('booth-adscreen'))
+            if player.id == 83:
+                return HttpResponseRedirect(reverse('booth-prize', args=(player.id,)))
             if player.prize:
                 return HttpResponseRedirect(reverse('booth-cheater', args=(player.id,)))
             else:
@@ -101,9 +103,12 @@ def summary(request, user_id):
 @login_required()
 def prize(request, user_id):
     player = get_object_or_404(User, pk=user_id)
-    random_prize = get_random_prize()
+    past_prize = int(request.session.get('prize', 12))
+    print "Past_prize: %s" % past_prize
+    random_prize = get_random_prize(past_prize)
     player.prize = random_prize
     player.save()
+    request.session['prize'] = random_prize.id
     return render_to_response('booth/prize.html', {
         'player': player,
         'prize': random_prize,
@@ -118,7 +123,7 @@ def cheater(request, user_id):
     }, context_instance=RequestContext(request))
 
 
-def get_random_prize():
+def get_random_prize(past_prize):
     prizes_list = Prize.objects.all().filter(stock__gt=0)
     # We build a dict with all available prizes
     prizes_dict = {}
@@ -138,6 +143,10 @@ def get_random_prize():
                 weighted_prizes_list.append(p)
     # We randomly choose one prize in the list
     prize = weighted_prizes_list[randrange(len(weighted_prizes_list))]
+    print "Random prize: %s" % prize
+    while prize == past_prize:
+        prize = weighted_prizes_list[randrange(len(weighted_prizes_list))]
+        print "Random prize: %s" % prize
     random_prize = get_object_or_404(Prize, pk=prize)
     chng_stock_prize = Prize.objects.get(pk=prize)
     chng_stock_prize.stock -= 1

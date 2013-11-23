@@ -41,6 +41,7 @@ class User(models.Model):
 
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.number
+
     def get_absolute_url(self):
         return "/game/qrcode/%i/" % self.pk
 
@@ -56,7 +57,6 @@ class UserForm(forms.ModelForm):
             'address': TextInput(attrs={'placeholder': 'Adresse'}),
             'postcode': TextInput(attrs={'placeholder': 'NPA'}),
             'locality': TextInput(attrs={'placeholder': 'Localite'}),
-            'country': TextInput(attrs={'placeholder': 'Pays'}),
             'height': TextInput(attrs={'placeholder': 'Hauteur (en cm)'}),
             'weight': TextInput(attrs={'placeholder': 'Poids (en kg)'}),
             'distinctive_signs': TextInput(attrs={'placeholder': 'Signe(s) distinctif(s)'}),
