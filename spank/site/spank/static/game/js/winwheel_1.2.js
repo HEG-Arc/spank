@@ -59,13 +59,13 @@ var determinedGetUrl = "";  	 // Set to URL of the server-side process to load v
 // Thinking about a clock face, 0 is at the 12 o'clock, 90 is at the 3 o'clock, 180 is 6 o'clock, 270 is 9 o'clock.
 var prizes = new Array();
 prizes[0] = {"name" : "2", "startAngle" : 0,   "endAngle" : 44};  // Note how prize end angle is 1 less than start angle of next prize so no overlap.
-prizes[1] = {"name" : "4", "startAngle" : 45,  "endAngle" : 89};
-prizes[2] = {"name" : "6", "startAngle" : 90,  "endAngle" : 134};
-prizes[3] = {"name" : "8", "startAngle" : 135, "endAngle" : 179};
+prizes[1] = {"name" : "3", "startAngle" : 45,  "endAngle" : 89};
+prizes[2] = {"name" : "4", "startAngle" : 90,  "endAngle" : 134};
+prizes[3] = {"name" : "5", "startAngle" : 135, "endAngle" : 179};
 prizes[4] = {"name" : "2", "startAngle" : 180, "endAngle" : 224};
-prizes[5] = {"name" : "4", "startAngle" : 225, "endAngle" : 269};
-prizes[6] = {"name" : "6", "startAngle" : 270, "endAngle" : 314};
-prizes[7] = {"name" : "8", "startAngle" : 315, "endAngle" : 360};
+prizes[5] = {"name" : "3", "startAngle" : 225, "endAngle" : 269};
+prizes[6] = {"name" : "4", "startAngle" : 270, "endAngle" : 314};
+prizes[7] = {"name" : "5", "startAngle" : 315, "endAngle" : 360};
 
 // Idea: an idea I had for this, but not implimented, is that if you wanted some the prizes / segments in your wheel to be "winners" and some to be "loosers"
 // you could add a property to the items in the prize array stating if win/loose and then in the doSpin function code that is executed when the spinning has
