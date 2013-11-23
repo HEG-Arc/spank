@@ -85,6 +85,19 @@ function bumperPress()
     .resultbarend {
         float: left;
     }
+    #culprit {
+        position: absolute;
+        left: 645px;
+    {% if player.coupable == 'Chiara' %}
+        top: 116px;
+    {% elif player.coupable == 'Simone' %}
+        top: 213px;
+    {% elif player.coupable == 'Richard' %}
+        top: 310px;
+    {% elif player.coupable == 'Autre' %}
+        top: 410px;
+    {% endif %}
+    }
 </style>
 
 <div id="background">
@@ -123,6 +136,9 @@ function bumperPress()
     </div>
     <div id="smartphone">
         <div id="smartphonered">&nbsp;</div><div class="resultbarend"><img src="{% static 'booth/img/resultbar_end.png' %}"></div>
+    </div>
+    <div id="culprit">
+        <img src="{% static 'booth/img/culprit-arrow.png' %}"
     </div>
 </div>
 
