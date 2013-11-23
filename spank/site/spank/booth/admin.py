@@ -30,4 +30,9 @@ from django.contrib import admin
 # Appagoo imports
 from .models import Prize
 
-admin.site.register(Prize)
+
+class PrizeAdmin(admin.ModelAdmin):
+    list_display = ('code', 'label', 'percentage', 'stock')
+
+
+admin.site.register(Prize, PrizeAdmin)
