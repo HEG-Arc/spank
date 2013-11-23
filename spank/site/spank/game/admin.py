@@ -8,9 +8,13 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('created_at', )
 
 
-admin.site.register(User, UserAdmin)
+class VisitAdmin(admin.ModelAdmin):
+    list_display = ('id', 'session_number', 'auth_accepted', 'created_at')
+    list_filter = ('created_at', )
 
-admin.site.register(Visit)
+admin.site.register(User, UserAdmin)
+admin.site.register(Visit, VisitAdmin)
+
 admin.site.register(Poll)
 admin.site.register(Choice)
 admin.site.register(Answer)
