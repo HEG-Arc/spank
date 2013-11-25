@@ -139,4 +139,7 @@ def get_random_prize():
     # We randomly choose one prize in the list
     prize = weighted_prizes_list[randrange(len(weighted_prizes_list))]
     random_prize = get_object_or_404(Prize, pk=prize)
+    chng_stock_prize = Prize.objects.get(pk=prize)
+    chng_stock_prize.stock -= 1
+    chng_stock_prize.save()
     return random_prize
