@@ -3,21 +3,10 @@
 
 {% block content %}
 <div class="row">
-<div class="col-lg-10">
-    <p>Hello{% if player.firstname %} {{ player.firstname }}{% endif %},</p>
-
-    <p>Maintenant que l’on se retrouve, j’aimerais encore te dire quelque chose entre quatre yeux... Tu m’as certes donné
-       un sacré coup de main dans cette enquête, mais je suis quand même préoccupée par la manière dont tu as joué!
-       On ne se connait pas bien, et on ne s’est jamais rencontré, mais tu n’as pas hésité à me donner énormément
-       d’informations sur ta vie privée dans le cadre de cette enquête...</p>
-    <p>J’ai demandé à Martin d’analyser le comportement des différents détectives en herbe et voilà le résultat te
-       concernant:</p>
-</div>
-<div class="col-lg-2">
-    <img src="{% static 'followup/img/spank3.gif' %}" width="80%" />
+<div class="col-lg-12">
+    <h1>Profils</h1>
 </div>
 </div>
-{% if player.cluster == 1 %}
 <div class="row">
 <div class="col-lg-12">
 <div class="alert alert-info">
@@ -48,7 +37,6 @@
 </div>
 </div>
 </div>
-{% elif player.cluster == 2 %}
 <div class="row">
 <div class="col-lg-12">
 <div class="alert alert-info">
@@ -82,7 +70,6 @@
 </div>
 </div>
 </div>
-{% elif player.cluster == 3 %}
 <div class="row">
 <div class="col-lg-12">
 <div class="alert alert-info">
@@ -118,43 +105,6 @@
 </div>
 </div>
 </div>
-{% else %}
-<div class="row">
-<div class="col-lg-12">
-<div class="alert alert-danger">
-   <h3>Erreur ;-)</h3>
-   <p>Nous sommes désolés, mais il semble que nous n'avons pas réussi à récupérer votre profil. Nous ne pouvons
-      malheureusement pas vous proposer une analyse ciblée de votre comportement vis-à-vis de la protection de votre
-      vie privée.</p>
-   <p>Vous avez la possibilité de <a href="{% url 'fup-profils' %}">consulter la description des trois profils type</a>
-      que nous avons établis afin d'identifier les comportements à risque les plus fréquents.</p>
-</div>
-</div>
-</div>
-{% endif %}
-<div class="row">
-<div class="col-lg-12">
-<p>Le jeu du détective Spank a été développé dans le cadre d’un projet de recherche sur la protection de la sphère
-   privée dans le domaine des applications mobiles. Nous étudions quels sont les <a href="{% url 'fup-profils' %}">
-   profils des utilisateurs de smartphone</a> et comment les protéger ou les informer des risques d’atteinte à leur
-   sphère privée.</p>
-<p>Toutes les données personnelles collectées dans le cadre du jeu vont être rendues anonymes après consultation de
-   cette page. Les données anonymisées ne seront pas utilisées à d’autres fins que la présente recherche et ne seront
-   en aucun cas transmises à des tiers à l’intérieur ou à l’extérieur de la HEG Arc.</p>
-<p>Si vous désirez recevoir un e-mail de notre part lorsque les résultats de la recherche seront publiés, veuillez
-   cocher la case ci-dessous. Votre adresse e-mail sera conservée séparément de votre profil anonymisé.</p>
 
-<form role="form" method="post" action="{% url 'fup-anonymize' player.id %}">{% csrf_token %}
-   <div class="checkbox">
-    <label>
-      <input id="id_register" type="checkbox" name="register" checked="checked"> Veuillez garder mon adresse e-mail
-      pour m’informer des résultats de la recherche
-    </label>
-   </div>
-   <button type="submit" class="btn btn-default">Veuillez anonymiser mes données</button>
-</form>
-
-</div>
-</div>
 
 {% endblock content %}
