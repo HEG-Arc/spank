@@ -52,7 +52,8 @@ class User(models.Model):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        exclude = ["number", "auth_accepeted", "created_at"]
+        exclude = ["number", "auth_accepted", "created_at", "updated_at", "last_update_at", "prize", "coupable",
+                   "contact_access", "notified", "anonymized", "registered", "cluster"]
         widgets = {
             'gender': Select(attrs={'data-native-menu': 'false', 'data-placeholder': 'true', 'placeholder': 'Selectionnez...'}),
             'lastname': TextInput(attrs={'placeholder': 'Nom'}),
