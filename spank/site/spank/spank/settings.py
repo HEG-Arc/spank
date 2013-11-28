@@ -41,7 +41,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost', '157.26.64.142', 'appagoo.ig.he-arc.ch']
+ALLOWED_HOSTS = ['localhost', '157.26.64.142', 'appagoo.ig.he-arc.ch', 'appagoo.ch', 'appagoo.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -170,8 +170,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'spank@appagoo.com'
 EMAIL_HOST_PASSWORD = 'xxxxxxxxx'
-DEFAULT_FROM_EMAIL = 'spank@appagoo.com'
-SERVER_EMAIL = 'spank@appagoo.com'
+DEFAULT_FROM_EMAIL = 'spank@appagoo.ch'
+SERVER_EMAIL = 'spank@appagoo.ch'
 ########## END EMAIL CONFIGURATION
 
 
