@@ -30,8 +30,6 @@ from django.db import models
 # Appagoo imports
 
 
-class Prize(models.Model):
-    code = models.IntegerField(max_length=2)
-    label = models.CharField(max_length=250)
-    percentage = models.IntegerField(max_length=2)
-    stock = models.IntegerField(max_length=5)
+class Registration(models.Model):
+    email = models.CharField(max_length=250)
+    created_at = models.DateTimeField(auto_now_add=True)

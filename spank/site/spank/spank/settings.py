@@ -4,7 +4,7 @@ import os
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ########## PATH CONFIGURATION
@@ -156,9 +156,24 @@ INSTALLED_APPS = (
     #'qrcode',
     'booth',
     'qrcodegen',
+    'followup',
 )
 
 LOGIN_REDIRECT_URL = '/'
+
+########## EMAIL CONFIGURATION
+# See: https://docs.djangoproject.com/en/1.5/topics/email/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'spank@appagoo.com'
+EMAIL_HOST_PASSWORD = 'xxxxxxxxx'
+DEFAULT_FROM_EMAIL = 'spank@appagoo.com'
+SERVER_EMAIL = 'spank@appagoo.com'
+########## END EMAIL CONFIGURATION
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

@@ -1,1 +1,0 @@
-Don't put anything in this folder. It if used by ./manage.py collectstatic to store static files in order to be served by Apache in production environment.

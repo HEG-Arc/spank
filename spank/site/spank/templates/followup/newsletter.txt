@@ -1,8 +1,11 @@
-Hello détective {{ firstname }} {{ lastname }},
-Vous avez participé à notre jeu lors de la journée des portes ouvertes à la HE-Arc et nous avez aidé à désigner {{ coupable }} comme coupable
-de la transmission des photos de Nabina.
+{% load url from future %}
+Hello, c’est moi, le détective Spank!
+Il y a quelques jours, tu m’as aidé à mener mon enquête pour retrouver le coupable dans une sombre histoire de vol de photos de notre starlette Nabina.
 
-Le jeux que vous avez fait était destiné à mesurer ...
+Je dois t’avouer que ça n’a pas été facile et que j’ai reçu des avis très différents des personnes qui m’ont donné un coup de main sur cette enquête. Toutefois, il semble que la majorité des détectives soient de l’avis que le coupable ne soit pas un des trois suspects que j’avais retenu, mais bien le téléphone de Nabina... Je l’ai donc fait inspecter par mon ami Martin, l’informaticien de gestion, qui m’a bien confirmé la présence d’une application malveillante qui se cachait sous un petit jeu anodin de vaches en colère.
+
+Ah, j’oubliais, tu veux voir les résultats et savoir si tu as gagné? Pas de problème, c’est ici:
+    http://appagoo.ig.he-arc.ch{% url 'fup-result' number %}
 
 Avec nos meilleures salutations
 Le team Spank

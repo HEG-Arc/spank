@@ -1,0 +1,13 @@
+{% extends 'followup/master.html' %}
+
+{% block content %}
+
+<div class="alert alert-info">
+   <h3>Anonymisation de vos données</h3>
+   <p>Vos données personnelles ont été anonymisées à l'aide d'un générateur aléatoire. Les données ci-dessous remplacent
+      maintenant vos données personnelles dans notre base de données.</p>
+   {{ player.firstname }} | {{ player.lastname }} | {{ player.email }}
+   <p>Merci pour votre collaboration.</p>
+</div>
+
+{% endblock content %}

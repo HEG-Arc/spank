@@ -1,0 +1,69 @@
+{% extends 'followup/master.html' %}
+
+{% block content %}
+
+<p>Hello{% if player.firstname %} {{ player.firstname }}{% endif %},</p>
+
+<p>Maintenant que l’on se retrouve, j’aimerais encore te dire quelque chose entre quatre yeux... Tu m’as certes donné
+   un sacré coup de main dans cette enquête, mais je suis quand même préoccupée par la manière dont tu as joué!
+   On ne se connait pas bien, et on ne s’est jamais rencontré, mais tu n’as pas hésité à me donner énormément
+   d’informations sur ta vie privée dans le cadre de cette enquête...</p>
+<p>J’ai demandé à Martin d’analyser le comportement des différents détectives en herbe et voilà le résultat te
+   concernant:</p>
+
+{% if player.cluster == 1 %}
+<div class="alert alert-info">
+   <h3>Insouciance combative</h3>
+   <p>Tu es le profil idéal pour toutes les organisations assoiffées de données personnelles. Tu n’as pas hésité à nous
+      dévoiler toutes tes informations, soit de manière volontaire en remplissant ta carte de détective, soit en
+      autorisant l’application à venir se servir toute seule sur ton smartphone, dans le seul but de recevoir un petit
+      cadeau de notre part.</p>
+   <p>Ton attitude est très appréciée des spécialistes du marketing et de la vente de données personnelles. Sans avoir
+      analysé dans les détails les informations que tu as transmises, je dirai que ton profil complet vaut entre CHF
+      4.- et 6.- selon la qualité des données… dans tous les cas bien plus que le prix que tu as ramené à la maison.</p>
+</div>
+<div class="alert alert-danger">
+   <h3>Martin</h3>
+   <p>Si je peux te donner un conseil à l’avenir, pense à faire attention au moment d’installer une application sur ton
+      smartphone au rapport entre les droits qui te sont demandés et les fonctionnalités qui te sont offertes par
+      l’application. Par exemple, il n’y a aucune raison de te demander accès à ton carnet d’adresses ou à ta
+      localisation pour faire un jeu en ligne. Si c’est le cas, l’application va se servir de tes données personnelles
+      à d’autres fins que le jeu lui-même. On estime à environ XXX % le nombre d’applications qui collectent des
+      données personnelles à d’autres fins que le bon fonctionnement de l’application elle-même.</p>
+</div>
+{% elif player.cluster == 2 %}
+
+{% elif player.cluster == 3 %}
+
+{% else %}
+<div class="alert alert-danger">
+   <h3>Erreur ;-)</h3>
+   <p>Nous sommes désolés, mais il semble que nous n'avons pas réussi à récupérer votre profil. Nous ne pouvons
+      malheureusement pas vous proposer une analyse ciblée de votre comportement vis-à-vis de la protection de votre
+      vie privée.</p>
+   <p>Vous avez la possibilité de consulter la description des trois profils type que nous avons établis afin
+      d'identifier les comportements à risque les plus fréquents.</p>
+</div>
+{% endif %}
+<p>Le jeu du détective Spank a été développé dans le cadre d’un projet de recherche sur la protection de la sphère
+   privée dans le domaine des applications mobiles. Nous étudions quels sont les profils des utilisateurs de smartphone
+   et comment les protéger ou les informer des risques d’atteinte à leur sphère privée.</p>
+<p>Toutes les données personnelles collectées dans le cadre du jeu vont être rendues anonymes après consultation de
+   cette page. Les données anonymisées ne seront pas utilisées à d’autres fins que la présente recherche et ne seront
+   en aucun cas transmises à des tiers à l’intérieur ou à l’extérieur de la HEG Arc.</p>
+<p>Si vous désirez recevoir un e-mail de notre part lorsque les résultats de la recherche seront publiés, veuillez
+   cocher la case ci-dessous. Votre adresse e-mail sera conservée séparément de votre profil anonymisé.</p>
+
+<form role="form" method="post" action="{% url 'fup-anonymize' player.id %}">{% csrf_token %}
+   <div class="checkbox">
+    <label>
+      <input id="id_register" type="checkbox" name="register" checked="checked"> Veuillez garder mon adresse e-mail
+      pour m’informer des résultats de la recherche
+    </label>
+   </div>
+   <button type="submit" class="btn btn-default">Veuillez anonymiser mes données</button>
+</form>
+
+
+
+{% endblock content %}

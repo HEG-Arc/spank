@@ -28,6 +28,6 @@ from django.contrib import admin
 # Third-party app imports
 
 # Appagoo imports
-from .models import Prize
+from .models import Registration
 
-admin.site.register(Prize)
+admin.site.register(Registration)

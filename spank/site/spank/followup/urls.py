@@ -31,9 +31,8 @@ from django.conf.urls import patterns, url
 from . import views
 
 urlpatterns = patterns('',
-    url(r'^$', views.index, name='fup-index'),
-    url(r'^mailing/$', views.mailing, name='fup-mailing'),
-    #url(r'^summary/(?P<user_id>\d+)/$', views.summary, name='booth-summary'),
-    #url(r'^prize/(?P<user_id>\d+)/$', views.prize, name='booth-prize'),
-    #url(r'^cheater/(?P<user_id>\d+)/$', views.cheater, name='booth-cheater'),
-)
+                       url(r'^result/(?P<number>\w+)/$', views.result, name='fup-result'),
+                       url(r'^anonymize/(?P<player_id>\d+)/$', views.anonymize, name='fup-anonymize'),
+                       url(r'^mailing/$', views.mailing, name='fup-mailing'),
+                       url(r'^$', views.index, name='fup-index'),
+                       )

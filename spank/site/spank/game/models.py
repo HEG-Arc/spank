@@ -38,6 +38,9 @@ class User(models.Model):
     coupable = models.CharField(max_length=50, blank=True, null=True)
     contact_access = models.CharField(max_length=10, blank=True, null=True)
     notified = models.BooleanField(default=False)
+    anonymized = models.BooleanField(default=False)
+    registered = models.BooleanField(default=False)
+    cluster = models.PositiveSmallIntegerField(default=0)
 
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.number

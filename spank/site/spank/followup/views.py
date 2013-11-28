@@ -37,12 +37,12 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned, 
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
-
 # Third-party app imports
+from faker import Factory
 
 # Appagoo imports
-from game.models import User, Answer
-from .models import Prize
+from game.models import User
+from .models import Registration
 from spank import settings
 
 # Get an instance of a logger
@@ -89,9 +89,45 @@ class TriggerMailForm(forms.Form):
 TriggerMailFormset = forms.formsets.formset_factory(TriggerMailForm, extra=0)
 
 
+class AnonymizeForm(forms.Form):
+    register = forms.BooleanField(initial=True, label=_(u"Gardez mon adresse e-mail pour m'informer des résultats de ce projet"))
+
+
 def index(request):
     return render_to_response('followup/index.html', {
         #'hire': hire,
+    }, context_instance=RequestContext(request))
+
+
+def result(request, number):
+    player = get_object_or_404(User, number=number)
+    form = AnonymizeForm()
+    return render_to_response('followup/result.html', {
+        'player': player,
+        'form': form,
+    }, context_instance=RequestContext(request))
+
+
+def anonymize(request, player_id):
+    player = get_object_or_404(User, pk=player_id)
+    if request.method == 'POST':
+        fake = Factory.create('fr_FR')
+        form = AnonymizeForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['register'] == True:
+                registration = Registration()
+                registration.email = player.email
+                registration.save()
+            player.firstname = fake.first_name()
+            player.lastname = fake.last_name()
+            player.email = fake.company_email()
+            player.register = form.cleaned_data['register']
+            player.save()
+    else:
+        return HttpResponseRedirect(reverse('fup-result', args=(player.number,)))
+
+    return render_to_response('followup/anonymize.html', {
+        'player': player,
     }, context_instance=RequestContext(request))
 
 
@@ -102,8 +138,8 @@ def create_email(user):
     from_email = settings.DEFAULT_FROM_EMAIL
     subject = _(u"[HE-Arc] Détective Spank")
 
-    text_content = render_to_string(template_text, {"lastname": user.lastname, "firstname": user.firstname, 'coupable': user.coupable})
-    html_content = render_to_string(template_html, {"lastname": user.lastname, "firstname": user.firstname, 'coupable': user.coupable})
+    text_content = render_to_string(template_text, {"number": user.number})
+    html_content = render_to_string(template_html, {"number": user.number})
 
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html_content, "text/html")
@@ -118,12 +154,12 @@ def send_emails(selected_players):
     connection.open() # If you don't open the connection manually, Django will automatically open, then tear down the connection in msg.send()
 
     for user in selected_players:
-        try:
+        #try:
             msg = create_email(user)
             msg.send()
             user.notified = True
-        except:
-            pass
+        #except:
+        #    pass
 
     connection.close()
 
