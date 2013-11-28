@@ -1,0 +1,58 @@
+{% extends 'followup/master.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+<div class="col-lg-12">
+    <h1>Impressum</h1>
+
+    <h3>Projet Appagoo</h3>
+    Projet de recherche ISnet 37075 financé par le Réseau de Compétence de Suisse Occidentale (RCSO) de la HES-SO.
+    <dl>
+        <dt>Institution</dt>
+        <dd>Haute école de gestion Arc<br>
+            Espace de l’Europe 21<br>
+            2000 Neuchâtel</dd>
+        <dt>Responsable du projet</dt>
+        <dd>Prof. Dr. Cédric Gaspoz</dd>
+        <dt>Assistant de recherche</dt>
+        <dd>Alessio de Santo</dd>
+    </dl>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-10">
+    <h3>Jeu mobile du détective Spank</h3>
+    Le jeu pour smartphone du détective Spank a été développé d'après une idée originale d'Alessio de Santo et
+    Cédric Gaspoz à l'occasion des Portes Ouvertes 2013 de la HE-Arc et du Forum HEG 2013.
+    <h4>Crédits</h4>
+    <dl>
+        <dt>Conception</dt>
+        <dd>Alessio de Santo</dd>
+        <dt>Développement</dt>
+        <dd>Alessio de Santo et Cédric Gaspoz</dd>
+        <dt>Graphisme</dt>
+        <dd>Yves Mettler (<a href="http://theselection.net">theselection.net</a>)</dd>
+        <dt>Photographies</dt>
+        <dd>Chiara: &copy; binababy12, 2009</dd>
+        <dd>Simone: &copy; african_fi, 2013</dd>
+        <dd>Richard: &copy; kevinruss, 2005</dd>
+        <dd>Nabina: &copy; aldra, 2005</dd>
+    </dl>
+    <h4>Application</h4>
+    <dl>
+        <dt>IDE</dt>
+        <dd>Pycharm 3.0</dd>
+        <dt>Framework</dt>
+        <dd>Django 1.5.1</dd>
+        <dt>Base de données</dt>
+        <dd>PostgreSQL 9</dd>
+    </dl>
+    Le code source de l'application est disponible sur GitHub:<br>
+    <a href="https://github.com/HEG-Arc/appagoo">https://github.com/HEG-Arc/appagoo</a>.
+</div>
+<div class="col-lg-2">
+    <img src="{% static 'followup/img/spank3.gif' %}" width="80%" />
+</div>
+</div>
+{% endblock content %}

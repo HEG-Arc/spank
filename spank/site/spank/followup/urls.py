@@ -24,6 +24,7 @@
 
 # Core Django imports
 from django.conf.urls import patterns, url
+from django.views.generic import TemplateView
 
 # Third-party app imports
 
@@ -34,5 +35,8 @@ urlpatterns = patterns('',
                        url(r'^result/(?P<number>\w+)/$', views.result, name='fup-result'),
                        url(r'^anonymize/(?P<player_id>\d+)/$', views.anonymize, name='fup-anonymize'),
                        url(r'^mailing/$', views.mailing, name='fup-mailing'),
+                       url(r'^about$', TemplateView.as_view(template_name='followup/about.html'), name='fup-about'),
+                       url(r'^impressum$', TemplateView.as_view(template_name='followup/impressum.html'), name='fup-impressum'),
+                       url(r'^contact$', TemplateView.as_view(template_name='followup/contact.html'), name='fup-contact'),
                        url(r'^$', views.index, name='fup-index'),
                        )

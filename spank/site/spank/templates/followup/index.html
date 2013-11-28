@@ -1,16 +1,22 @@
 {% extends 'followup/master.html' %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Détective SPANK</title>
-</head>
-<body>
-<h1>Détective SPANK</h1>
-<p>Bienvenue!</p>
-<p>Je suis content de vous rencontrer ici, mais il faut que vous sachiez qu'il doit s'agir d'une erreur...</p>
-<p>Si vous avez reçu un e-mail, veuillez utiliser le lien se trouvant dans l'e-mail pour accéder à ce site. Vous aurez
-ainsi accès à vos informations.</p>
-<p>Si vous n'avez reçu aucun e-mail de notre part, vous êtes certainement arrivé ici par hasard. Le meilleur endroit
-pour continuer votre visite est notre page d'accueil: <a href="http://appagoo.com">appagoo.com</a>.</p>
-</body>
-</html>
+{% load static %}
+
+{% block content %}
+<div class="row">
+<div class="col-lg-12">
+    <h1>Bienvenue!</h1>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-8">
+    <p>Je suis content de vous rencontrer ici, mais il faut que vous sachiez qu'il doit s'agir d'une erreur...</p>
+    <p>Si vous avez reçu un e-mail, veuillez utiliser le lien se trouvant dans l'e-mail pour accéder à ce site. Vous aurez
+    ainsi accès à vos informations.</p>
+    <p>Si vous n'avez reçu aucun e-mail de notre part, vous êtes certainement arrivé ici par hasard. Vous pouvez
+    prendre connaissance du projet Appagoo, ou alors, participer au jeu!</p>
+</div>
+<div class="col-lg-4">
+    <a href="{% url 'intro' %}"><img src="{% static 'splash/img/play.png' %}" alt="JOUER !" /></a>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'followup/master.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+<div class="col-lg-12">
+    <h1>About</h1>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-2">
+    <img src="{% static 'followup/img/spank3.gif' %}" width="80%" />
+</div>
+<div class="col-lg-10">
+    <p>Le jeu du détective Spank a été développé dans le cadre d’un projet de recherche sur la protection de la sphère
+       privée dans le domaine des applications mobiles. Nous étudions quels sont les profils des utilisateurs de
+       smartphone et comment les protéger ou les informer des risques d’atteinte à leur sphère privée.</p>
+    <p>Toutes les données personnelles collectées dans le cadre du jeu ont été anonymisées avant leur utilisation. Les
+       données anonymisées ne seront pas utilisées à d’autres fins que la présente recherche et ne seront en aucun cas
+       transmises à des tiers à l’intérieur ou à l’extérieur de la HEG Arc.</p>
+</div>
+</div>
+{% endblock content %}
