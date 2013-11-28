@@ -41,6 +41,7 @@ class User(models.Model):
     anonymized = models.BooleanField(default=False)
     registered = models.BooleanField(default=False)
     cluster = models.PositiveSmallIntegerField(default=0)
+    winner = models.BooleanField(default=False)
 
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.number
@@ -53,7 +54,7 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         exclude = ["number", "auth_accepted", "created_at", "updated_at", "last_update_at", "prize", "coupable",
-                   "contact_access", "notified", "anonymized", "registered", "cluster"]
+                   "contact_access", "notified", "anonymized", "registered", "cluster", "winner"]
         widgets = {
             'gender': Select(attrs={'data-native-menu': 'false', 'data-placeholder': 'true', 'placeholder': 'Selectionnez...'}),
             'lastname': TextInput(attrs={'placeholder': 'Nom'}),

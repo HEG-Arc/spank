@@ -2,6 +2,28 @@
 {% load static %}
 
 {% block content %}
+{% if player.winner %}
+<div class="row">
+<div class="col-lg-12">
+<div class="alert alert-warning">
+   <h3>Big news! Tu as gagné!</h3>
+   <p>Nous sommes heureux de t'annoncer que tu as gagné la tablette Nexus 7! Elle est à toi! Pour en prendre possession,
+      contacte nous par e-mail à l'adresse <a href="mailto:spank@appagoo.ch">spank@appagoo.ch</a>. BRAVO!</p>
+</div>
+</div>
+</div>
+{% else %}
+<div class="row">
+<div class="col-lg-12">
+<div class="alert alert-warning">
+   <h3>Pas de chance pour la tablette :-(</h3>
+   <p>Nous devons malheureusement t'informer que tu n'as pas été tiré au sort pour la tablette Nexus 7... en espérant
+      que la prochaine fois soit la bonne!</p>
+</div>
+</div>
+</div>
+{% endif %}
+
 <div class="row">
 <div class="col-lg-10">
     <p>Hello{% if player.firstname %} {{ player.firstname }}{% endif %},</p>
@@ -28,7 +50,7 @@
       cadeau de notre part.</p>
    <p>Ton attitude est très appréciée des spécialistes du marketing et de la vente de données personnelles. Sans avoir
       analysé dans les détails les informations que tu as transmises, je dirai que ton profil complet vaut entre CHF
-      4.- et 6.- selon la qualité des données… dans tous les cas bien plus que le prix que tu as ramené à la maison.</p>
+      4.- et 6.- selon la qualité des données... dans tous les cas bien plus que le prix que tu as ramené à la maison.</p>
 </div>
 </div>
 </div>
@@ -143,7 +165,10 @@
    en aucun cas transmises à des tiers à l’intérieur ou à l’extérieur de la HEG Arc.</p>
 <p>Si vous désirez recevoir un e-mail de notre part lorsque les résultats de la recherche seront publiés, veuillez
    cocher la case ci-dessous. Votre adresse e-mail sera conservée séparément de votre profil anonymisé.</p>
-
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12 text-center">
 <form role="form" method="post" action="{% url 'fup-anonymize' player.id %}">{% csrf_token %}
    <div class="checkbox">
     <label>
@@ -156,5 +181,9 @@
 
 </div>
 </div>
-
+<div class="row">
+<div class="col-lg-12 text-center">
+&nbsp;
+</div>
+</div>
 {% endblock content %}
