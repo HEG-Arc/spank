@@ -10,3 +10,4 @@ django-qrcode
 pillow
 qrcode
 fake-factory
+django-celery-email

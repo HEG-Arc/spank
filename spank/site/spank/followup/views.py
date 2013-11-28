@@ -34,8 +34,8 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned, ValidationError
-from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.core import mail
 
 # Third-party app imports
 from faker import Factory
@@ -132,36 +132,26 @@ def anonymize(request, player_id):
 
 
 def create_email(user):
-    template_html = 'followup/newsletter.html'
+    #template_html = 'followup/newsletter.html'
     template_text = 'followup/newsletter.txt'
     to = user.email
     from_email = settings.DEFAULT_FROM_EMAIL
     subject = _(u"[HE-Arc] Détective Spank")
-
     text_content = render_to_string(template_text, {"number": user.number})
-    html_content = render_to_string(template_html, {"number": user.number})
-
-    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-    msg.attach_alternative(html_content, "text/html")
-
+    #html_content = render_to_string(template_html, {"number": user.number})
+    msg = ((subject, text_content, from_email, [to]),)
+    #msg.attach_alternative(html_content, "text/html")
     return msg
 
 
 def send_emails(selected_players):
-    from django.core.mail import get_connection, EmailMultiAlternatives
-
-    connection = get_connection() # uses SMTP server specified in settings.py
-    connection.open() # If you don't open the connection manually, Django will automatically open, then tear down the connection in msg.send()
-
+    emails = ()
     for user in selected_players:
-        #try:
-            msg = create_email(user)
-            msg.send()
-            user.notified = True
-        #except:
-        #    pass
-
-    connection.close()
+        emails += create_email(user)
+        user.notified = True
+        user.save()
+    results = mail.send_mass_mail(emails)
+    return results
 
 
 @login_required()
@@ -203,7 +193,7 @@ def mailing(request):
                 return HttpResponseRedirect(reverse('fup-mailing'))
     else:
         users_list = []
-        users = User.objects.exclude(last_update_at__isnull=True).exclude(email__exact='').exclude(notified__exact=True)
+        users = User.objects.exclude(cluster__exact=0).exclude(email__exact='').exclude(notified__exact=True)
         for user in users:
             data = {}
             data['sid'] = user.id

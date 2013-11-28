@@ -151,9 +151,9 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'dh5bp',
     'dh5mbp',
+    'djcelery_email',
     'game',
     'south',
-    #'qrcode',
     'booth',
     'qrcodegen',
     'followup',
@@ -163,13 +163,13 @@ LOGIN_REDIRECT_URL = '/'
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/1.5/topics/email/
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+CELERY_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'spank@appagoo.com'
-EMAIL_HOST_PASSWORD = 'xxxxxxxxx'
+EMAIL_HOST_PASSWORD = 'xxxxxxxxxx'
 DEFAULT_FROM_EMAIL = 'spank@appagoo.ch'
 SERVER_EMAIL = 'spank@appagoo.ch'
 ########## END EMAIL CONFIGURATION
