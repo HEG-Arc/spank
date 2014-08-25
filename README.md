@@ -1,1 +1,3 @@
-﻿Appagoo
+﻿Spank
+
+Interactive detective game
